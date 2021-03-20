@@ -7,7 +7,8 @@ LABEL maintainer="XxAcielxX"
 RUN \
  echo "**** apply patch for /downloads/ ****" && \
  sed -i '97,98d' /rootfs/etc/cont-init.d/03-config && \
- sed -i '298,300d' Dockerfile
+ sed -i '298,300d' Dockerfile && \
+ cp /rootfs/tpls/.rtorrent.rc /data/rtorrent/.rtorrent.rc
 
 EXPOSE 6881/udp 8000 8080 9000 50000
 VOLUME [ "/data", "/downloads", "/passwd" ]
