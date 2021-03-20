@@ -6,7 +6,7 @@ LABEL maintainer="XxAcielxX"
 # modifications
 RUN \
  echo "**** apply patch for /downloads/ ****" && \
- sed -i '97,98d' /rootfs/etc/cont-init.d/03-config
+ sed -i '97,98d' /rootfs/etc/cont-init.d/03-config.sh
 RUN \
  echo "**** apply patch for Healthcheck ****" && \
  sed -i '295,297d' Dockerfile
