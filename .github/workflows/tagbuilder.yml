@@ -13,16 +13,8 @@ jobs:
         name: Checkout
         uses: actions/checkout@v2
       -
-        name: Set Tag output
-        id: vars
-        run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
-      -
-        name: Check Tag output
-        env:
-          RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
-        run: |
-          echo $RELEASE_VERSION
-          echo ${{ steps.vars.outputs.tag }}
+        name: Extract Git Tag
+        run: echo ::set-env name=GIT_TAG::${GITHUB_REF#refs/*/}
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -37,9 +29,11 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       -
         name: Build and push
+        env:
+          IMAGE_TAG: ${{ env.GIT_TAG }}
         uses: docker/build-push-action@v2
         with:
           context: .
           platforms: linux/amd64,linux/arm64,linux/arm/v7
           push: true
-          tags: "${{ secrets.DOCKER_USERNAME }}/rutorrent:${{ secrets.RELEASE_VERSION }}"
+          tags: "${{ secrets.DOCKER_USERNAME }}/rutorrent:$IMAGE_TAG"
