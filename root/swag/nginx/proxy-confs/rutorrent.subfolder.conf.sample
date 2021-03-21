@@ -1,4 +1,4 @@
-## Version 2021/02/20
+## Version 2021/02/21
 # rutorrent does not require a base url setting
 
 location /rutorrent {
