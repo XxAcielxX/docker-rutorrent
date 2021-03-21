@@ -21,5 +21,9 @@ jobs:
       - name: build the image
         run: |
           docker buildx build \
-          --tag xxacielxx/rutorrent:latest \
-          --platform linux/amd64,linux/arm/v7,linux/arm64/v8 .
+          --tag xxacielxx/rutorrent \
+          --platform linux/amd64,linux/arm/v7,linux/arm64 .
+
+      - name: push the image
+      - run: |
+         docker push ${{ secrets.DOCKER_PASSWORD }}/rutorrent 
