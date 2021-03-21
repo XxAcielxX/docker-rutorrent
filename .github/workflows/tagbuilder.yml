@@ -12,12 +12,12 @@ jobs:
       -
         name: Checkout
         uses: actions/checkout@v2
-     -
-        name: Set output
+      -
+        name: Set Tag output
         id: vars
         run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
-     -
-        name: Check output
+      -
+        name: Check Tag output
         env:
           RELEASE_TAG: ${{ steps.vars.outputs.tag }}
       -
