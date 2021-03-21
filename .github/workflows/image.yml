@@ -26,4 +26,4 @@ jobs:
 
       - name: push the image
       - run: |
-         docker push ${{ secrets.DOCKER_PASSWORD }}/rutorrent 
+         docker push ${{ secrets.DOCKER_USERNAME }}/rutorrent
