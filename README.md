@@ -1,16 +1,17 @@
 # xxacielxx/rutorrent
 
 This is a clone of the [crazymax/rtorrent-rutorrent](https://hub.docker.com/crazymax/rtorrent-rutorrent) container with the following modifications:
-- Stop creation of /downloads{/completed,/temp} directories
-- Stop Healthchecks
-- Changed Default Download directory to /downloads
-- Disable move of completed torrents
-- Tuned off `PEX` & `system.umask.set` (in .rtorrent.rc)
+- Stop creation of `/downloads{/completed,/temp}` directories
+- Disabled Healthchecks
+- Changed Default Downloads directory to `/downloads`
+- Disabled move of completed torrents
+- Tuned off `PEX` & `system.umask.set` (in `.rtorrent.rc`)
 
 ## Usage
-```shell
+````shell
 mkdir data downloads passwd
 chown ${PUID}:${PGID} data downloads passwd
+
 docker run -d --name rutorrent \
   --ulimit nproc=65535 \
   --ulimit nofile=32000:40000 \
@@ -23,10 +24,9 @@ docker run -d --name rutorrent \
   -v $(pwd)/downloads:/downloads \
   -v $(pwd)/passwd:/passwd \
   xxacielxx/-rutorrent:latest
-```
+````
 
 ## Volumes
-
 * `/data`: rTorrent / ruTorrent config, session files, log, ...
 * `/downloads`: Downloaded files
 * `/passwd`: Contains htpasswd files for basic auth
