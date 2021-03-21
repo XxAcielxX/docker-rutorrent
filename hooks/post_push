@@ -1,7 +1,0 @@
-#!/bin/bash
-
-docker manifest push --purge xxacielxx/rutorrent:latest
-docker manifest create xxacielxx/rutorrent:latest xxacielxx/rutorrent:amd64-latest xxacielxx/rutorrent:arm32v7-latest xxacielxx/rutorrent:arm64v8-latest
-docker manifest annotate xxacielxx/rutorrent:latest xxacielxx/rutorrent:arm32v7-latest --os linux --arch arm
-docker manifest annotate xxacielxx/rutorrent:latest xxacielxx/rutorrent:arm64v8-latest --os linux --arch arm64 --variant v8
-docker manifest push --purge xxacielxx/rutorrent:latest
