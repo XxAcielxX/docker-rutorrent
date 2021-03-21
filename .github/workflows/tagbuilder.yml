@@ -20,6 +20,9 @@ jobs:
         name: Check Tag output
         env:
           RELEASE_TAG: ${{ steps.vars.outputs.tag }}
+        run: |
+          echo $RELEASE_VERSION
+          echo ${{ steps.vars.outputs.tag }}
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
