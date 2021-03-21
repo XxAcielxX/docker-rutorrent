@@ -12,6 +12,14 @@ jobs:
       -
         name: Checkout
         uses: actions/checkout@v2
+     -
+        name: Set output
+        id: vars
+        run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
+     -
+        name: Check output
+        env:
+          RELEASE_TAG: ${{ steps.vars.outputs.tag }}
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -31,4 +39,4 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64,linux/arm/v7
           push: true
-          tags: "${{ secrets.DOCKER_USERNAME }}/rutorrent:$GITHUB_REF"
+          tags: "${{ secrets.DOCKER_USERNAME }}/rutorrent:$RELEASE_TAG"
