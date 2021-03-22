@@ -36,5 +36,14 @@ jobs:
           platforms: linux/amd64,linux/arm64,linux/arm/v7
           push: true
           tags: |
-            "${{ secrets.DOCKER_USERNAME }}/rutorrent:${{ steps.vars.outputs.tag }}"
             "${{ secrets.DOCKER_USERNAME }}/rutorrent:latest"
+            "${{ secrets.DOCKER_USERNAME }}/rutorrent:${{ steps.vars.outputs.tag }}"
+          platforms: linux/amd64
+          push: true
+          tags: "${{ secrets.DOCKER_USERNAME }}/rutorrent:amd64-latest"
+          platforms: linux/arm64
+          push: true
+          tags: "${{ secrets.DOCKER_USERNAME }}/rutorrent:arm64v8-latest"
+          platforms: linux/arm/v7
+          push: true
+          tags: "${{ secrets.DOCKER_USERNAME }}/rutorrent:arm32v7-latest"
