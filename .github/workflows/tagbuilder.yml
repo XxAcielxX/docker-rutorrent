@@ -13,8 +13,9 @@ jobs:
         name: Checkout
         uses: actions/checkout@v2
       -
-        name: Extract Git Tag
-        run: echo ::set-env name=GIT_TAG::${GITHUB_REF#refs/*/}
+        name: Set Tag output
+        id: vars
+        run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -30,7 +31,7 @@ jobs:
       -
         name: Build and push
         env:
-          IMAGE_TAG: ${{ env.GIT_TAG }}
+          IMAGE_TAG: ${{ steps.vars.outputs.tag }}
         uses: docker/build-push-action@v2
         with:
           context: .
