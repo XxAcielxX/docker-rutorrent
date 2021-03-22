@@ -1,6 +1,12 @@
-# xxacielxx/rutorrent
+# [xxacielxx/rutorrent](https://github.com/XxAcielxX/docker-rutorrent/)
 
-This is a clone of the [crazymax/rtorrent-rutorrent](https://hub.docker.com/crazymax/rtorrent-rutorrent) container with the following modifications:
+![alt text](https://github.com/XxAcielxX/docker-rutorrent/blob/main/root/rutorrent.jpg?raw=true)
+[rtorrent](https://github.com/rakshasa/rtorrent) is a popular bittorrent client with front-end Web-UI based on [rutorrent](https://github.com/Novik/ruTorrent).
+
+## Supported Architectures
+Our images support multiple architectures such as `x86-64`, `arm64` and `armhf`. When you pull the image, it will get the one appropriate for your system architecture.
+
+### This is a clone of the [crazymax/rtorrent-rutorrent](https://hub.docker.com/crazymax/rtorrent-rutorrent) container with the following modifications:
 - Stop creation of `/downloads{/completed,/temp}` directories
 - Disabled Healthchecks
 - Changed Default Downloads directory to `/downloads`
