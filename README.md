@@ -1,6 +1,7 @@
 # [xxacielxx/rutorrent](https://github.com/XxAcielxX/docker-rutorrent/)
 
 <img src="https://github.com/XxAcielxX/docker-rutorrent/raw/main/root/rutorrent.jpg?raw=true" width="60%" height="60%"/>
+
 [rtorrent](https://github.com/rakshasa/rtorrent) is a popular bittorrent client with front-end Web-UI based on [rutorrent](https://github.com/Novik/ruTorrent).
 
 ## Supported Architectures
