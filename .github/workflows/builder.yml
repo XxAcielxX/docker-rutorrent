@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        architecture: [arm32v7, arm64, amd64]
+        architecture: [armhf, arm64, amd64]
     steps:
       -
         name: Checkout
@@ -67,8 +67,8 @@ jobs:
           TAG=${{ steps.prep.outputs.tag }}
           SOURCE=${IMAGE}
           [[ -f Dockerfile.amd64 ]]  && AMD64=${SOURCE}-amd64
-          [[ -f Dockerfile.arm64v8 ]]  && ARM64=${SOURCE}-arm64
-          [[ -f Dockerfile.arm32v7 ]]  && ARMV7=${SOURCE}-arm32v7
+          [[ -f Dockerfile.arm64 ]]  && ARM64=${SOURCE}-arm64
+          [[ -f Dockerfile.armhf ]]  && ARMV7=${SOURCE}-armhf
           docker manifest create ${IMAGE}:${TAG} ${AMD64} ${ARM64} ${ARMV7}
           docker manifest push   ${IMAGE}:${TAG}
           docker manifest create ${IMAGE}:latest ${AMD64} ${ARM64} ${ARMV7}
