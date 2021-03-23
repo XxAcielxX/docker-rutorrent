@@ -37,5 +37,5 @@ jobs:
         run: |
           docker buildx build \
           --label org.opencontainers.image.created=${{ steps.prep.outputs.created }} \
-          -t "xxacielxx/rutorrent:arm32v7" --platform linux/arm/v7 --file ./Dockerfile.armhf} \
+          -t "xxacielxx/rutorrent:arm32v7-latest" --platform linux/arm/v7 --file ./Dockerfile.armhf \
           --push .
