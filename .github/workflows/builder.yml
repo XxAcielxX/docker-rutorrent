@@ -43,7 +43,8 @@ jobs:
           ARCHITECTURE=${{ matrix.architecture }}
           echo ::set-output name=platform::${ARCHITECTURE//-/\/}
           echo ::set-output name=tag::${GITHUB_REF#refs/*/}
-          echo ::set-output name=outtag::${{ secrets.DOCKER_USERNAME }}/rutorrent:${{ matrix.architecture }}-latest
+          echo ::set-output name-arch::[arm32v7, arm64v8, amd64]
+          echo ::set-output name=outtag::${{ secrets.DOCKER_USERNAME }}/rutorrent:${{ steps.prep.outputs.arch }}-latest
           echo ::set-output name=created::$(date -u +'%Y-%m-%dT%H:%M:%SZ')
       -
         name: Build and push
@@ -69,5 +70,7 @@ jobs:
           [[ -f Dockerfile.amd64 ]] && AMD64=${SOURCE}:amd64
           [[ -f Dockerfile.arm64 ]] && ARM64=${SOURCE}:arm64
           [[ -f Dockerfile.armhf ]] && ARMV7=${SOURCE}:armhf
-          docker manifest create ${IMAGE}:${TAG} ${AMD64} ${ARM64} ${ARMV7}
-          docker manifest push ${IMAGE}:${TAG}
+          if [[ ${TAG} == release ]]; then
+          docker manifest create ${IMAGE}:latest ${AMD64} ${ARM64} ${ARMV7}
+          docker manifest push   ${IMAGE}:latest
+          fi
