@@ -16,7 +16,7 @@ jobs:
         name: Preparation Stage
         id: prep
         run: |
-          IMAGE="${{ secrets.DOCKER_USERNAME }}/rutorrent"
+          IMAGE=${{ secrets.DOCKER_USERNAME }}/rutorrent
           echo ::set-output name=gittag::${GITHUB_REF#refs/*/}
           echo ::set-output name=created::$(date -u +'%Y-%m-%dT%H:%M:%SZ')
       -
@@ -34,20 +34,4 @@ jobs:
       -
         name: Build arm32v7 Image & Push
         run: |
-          docker buildx build --label org.opencontainers.image.created=${{ steps.prep.outputs.created }} --tag ${IMAGE}:arm32v7-latest --platform linux/arm/v7 --file ./Dockerfile.armhf --push .
-      -
-        name: Build arm64v8 Image & Push
-        run: |
-          docker buildx build --label org.opencontainers.image.created=${{ steps.prep.outputs.created }}  --tag ${IMAGE}:arm64v8-latest --platform linux/arm64--file ./Dockerfile.arm64--push .
-      -
-        name: Build amd64 Image & Push
-        run: |
-          docker buildx build --label org.opencontainers.image.created=${{ steps.prep.outputs.created }}  --tag ${IMAGE}:amd64-latest --platform linux/amd64 --file ./Dockerfile.amd64 --push .
-      -
-        name: Build GitTag Images & Push
-        run: |
-          docker buildx build --label org.opencontainers.image.created=${{ steps.prep.outputs.created }}  --tag ${IMAGE}:${{ steps.vars.outputs.gittag }} --platforms linux/amd64,linux/arm64,linux/arm/v7 --file ./Dockerfile.amd64 --push .
-      -
-        name: Build Latest Images & Push
-        run: |
-          docker buildx build --label org.opencontainers.image.created=${{ steps.prep.outputs.created }}  --tag ${IMAGE}:latest --platforms linux/amd64,linux/arm64,linux/arm/v7 --file ./Dockerfile.amd64 --push .
+          docker buildx build --label org.opencontainers.image.created=${{ steps.prep.outputs.created }} -t "${IMAGE}:arm32v7-latest" --platform linux/arm/v7 --file ./Dockerfile.armhf --push .
