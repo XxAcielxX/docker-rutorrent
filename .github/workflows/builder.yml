@@ -58,12 +58,14 @@ jobs:
             ${{ steps.prep.outputs.outtag }}
           labels: |
             org.opencontainers.image.created=${{ steps.prep.outputs.created }}
+          built-args: |
+            BUILD_ARCHITECTURE=${{ matrix.architecture }}
       -
         name: Create manifests
         env:
           DOCKER_CLI_EXPERIMENTAL: enabled
         run: |
-          IMAGE=${{ secrets.DOCKER_USERNAME }}/rutorrent
+          IMAGE="${{ secrets.DOCKER_USERNAME }}/rutorrent"
           TAG=${{ steps.prep.outputs.tag }}
           SOURCE=${IMAGE}
           [[ -f Dockerfile.amd64 ]]  && AMD64=${SOURCE}-amd64
