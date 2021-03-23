@@ -56,8 +56,6 @@ jobs:
           push: true
           tags: |
             ${{ steps.prep.outputs.outtag }}
-            #"${{ secrets.DOCKER_USERNAME }}/rutorrent:latest"
-            #"${{ secrets.DOCKER_USERNAME }}/rutorrent:${{ steps.prep.outputs.tag }}"
           labels: |
             org.opencontainers.image.created=${{ steps.prep.outputs.created }}
       -
