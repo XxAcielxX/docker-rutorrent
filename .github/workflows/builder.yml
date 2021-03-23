@@ -63,12 +63,13 @@ jobs:
         env:
           DOCKER_CLI_EXPERIMENTAL: enabled
         run: |
-          IMAGE=${{ secrets.DOCKER_USERNAME }}/rutorrent
+          IMAGE=docker.io/${{ secrets.DOCKER_USERNAME }}/rutorrent
           TAG=${{ steps.prep.outputs.tag }}
-          [[ -f Dockerfile.amd64 ]]  && AMD64=amd64-latest
-          [[ -f Dockerfile.arm64 ]]  && ARM64=arm64v8-latest
-          [[ -f Dockerfile.armhf ]] && ARMV7=arm32v7-latest
+          SOURCE=${IMAGE}
+          [[ -f Dockerfile.amd64 ]]  && AMD64=${SOURCE}-amd64
+          [[ -f Dockerfile.arm64v8 ]]  && ARM64=${SOURCE}-arm64v8
+          [[ -f Dockerfile.arm32v7 ]]  && ARMV7=${SOURCE}-arm32v7
           docker manifest create ${IMAGE}:${TAG} ${AMD64} ${ARM64} ${ARMV7}
           docker manifest push   ${IMAGE}:${TAG}
           docker manifest create ${IMAGE}:latest ${AMD64} ${ARM64} ${ARMV7}
-            docker manifest push   ${IMAGE}:latest
+          docker manifest push   ${IMAGE}:latest
