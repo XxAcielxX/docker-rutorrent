@@ -35,4 +35,7 @@ jobs:
       -
         name: Build arm32v7 Image & Push
         run: |
-          docker buildx build --label org.opencontainers.image.created=${{ steps.prep.outputs.created }} -t "${SOURCE}:arm32v7-latest" --platform linux/arm/v7 --file ./Dockerfile.armhf --push .
+          docker buildx build \
+          --label org.opencontainers.image.created=${{ steps.prep.outputs.created }} \
+          -t "${SOURCE}:arm32v7" --platform linux/arm/v7 --file ./Dockerfile.armhf} \
+          --push .
