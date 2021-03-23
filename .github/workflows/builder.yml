@@ -43,7 +43,7 @@ jobs:
           ARCHITECTURE=${{ matrix.architecture }}
           echo ::set-output name=platform::${ARCHITECTURE//-/\/}
           echo ::set-output name=tag::${GITHUB_REF#refs/*/}
-          echo ::set-output name=outtag::${GITHUB_REPOSITORY}:${GITHUB_REF//refs\/heads\//}-${GITHUB_SHA:0:7}-${{ matrix.architecture }}
+          echo ::set-output name=outtag::${GITHUB_REPOSITORY}:${GITHUB_SHA:0:7}-${{ matrix.architecture }}
           echo ::set-output name=created::$(date -u +'%Y-%m-%dT%H:%M:%SZ')
       -
         name: Build and push
@@ -63,7 +63,7 @@ jobs:
           DOCKER_CLI_EXPERIMENTAL: enabled
         run: |
           IMAGE=${{ secrets.DOCKER_USERNAME }}/rutorrent
-          TAG=${GITHUB_REF#refs/*/}
+          TAG=${{ steps.vars.outputs.tag }}
           SOURCE=${IMAGE}
           [[ -f Dockerfile.amd64 ]]  && AMD64=${SOURCE}:amd64-latest
           [[ -f Dockerfile.arm64 ]]  && ARM64=${SOURCE}:arm64v8-latest
