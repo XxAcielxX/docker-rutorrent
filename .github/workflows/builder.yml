@@ -58,8 +58,6 @@ jobs:
             ${{ steps.prep.outputs.outtag }}
           labels: |
             org.opencontainers.image.created=${{ steps.prep.outputs.created }}
-          built-args: |
-            BUILD_ARCHITECTURE=${{ matrix.architecture }}
       -
         name: Create manifests
         env:
