@@ -1,4 +1,4 @@
-FROM --platform=linux/arm/v7 crazymax/rtorrent-rutorrent:latest
+FROM crazymax/rtorrent-rutorrent:latest
 
 # set labels
 LABEL maintainer="XxAcielxX"
