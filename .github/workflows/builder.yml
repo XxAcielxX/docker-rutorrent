@@ -17,6 +17,7 @@ jobs:
         id: prep
         run: |
           IMAGE=${{ secrets.DOCKER_USERNAME }}/rutorrent
+          SOURCE=${IMAGE}
           echo ::set-output name=gittag::${GITHUB_REF#refs/*/}
           echo ::set-output name=created::$(date -u +'%Y-%m-%dT%H:%M:%SZ')
       -
@@ -34,4 +35,4 @@ jobs:
       -
         name: Build arm32v7 Image & Push
         run: |
-          docker buildx build --label org.opencontainers.image.created=${{ steps.prep.outputs.created }} -t "${IMAGE}:arm32v7-latest" --platform linux/arm/v7 --file ./Dockerfile.armhf --push .
+          docker buildx build --label org.opencontainers.image.created=${{ steps.prep.outputs.created }} -t "${SOURCE}:arm32v7-latest" --platform linux/arm/v7 --file ./Dockerfile.armhf --push .
