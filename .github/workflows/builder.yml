@@ -37,6 +37,7 @@ jobs:
           docker buildx build \
           --label ${{ steps.prep.outputs.created }} \
           -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-arm32v7" \
+          -t "${{ steps.prep.outputs.image }}:arm32v7-latest" \
           --platform linux/arm/v7 -f ./Dockerfile.armhf \
           --push .
       -
@@ -45,6 +46,7 @@ jobs:
           docker buildx build \
           --label ${{ steps.prep.outputs.created }} \
           -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-arm64v8" \
+          -t "${{ steps.prep.outputs.image }}:arm64v8-latest" \
           --platform linux/arm64 -f ./Dockerfile.arm64 \
           --push .
       -
@@ -53,6 +55,7 @@ jobs:
           docker buildx build \
           --label ${{ steps.prep.outputs.created }} \
           -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-amd64" \
+          -t "${{ steps.prep.outputs.image }}:amd64-latest" \
           --platform linux/amd64 -f ./Dockerfile \
           --push .
       -
@@ -63,14 +66,9 @@ jobs:
           [[ -f Dockerfile ]] && AMD64=${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-amd64
           [[ -f Dockerfile.arm64 ]] && ARM64=${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-arm64v8
           [[ -f Dockerfile.armhf ]] && ARMV7=${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-arm32v7
-          echo "*** Push GitTag Images ***"
+          echo "*** Push GitTag Image ***"
           docker manifest create ${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }} ${AMD64} ${ARM64} ${ARMV7}
           docker manifest push ${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}
-          echo "*** Push Architecture Latest Images ***"
-          docker manifest create ${{ steps.prep.outputs.image }}:${ARMV7}-latest ${ARMV7}
-          docker manifest push ${{ steps.prep.outputs.image }}:${ARMV7}-latest
-          docker manifest create ${{ steps.prep.outputs.image }}:${ARM64}-latest ${ARM64}
-          docker manifest push ${{ steps.prep.outputs.image }}:${ARM64}-latest
-          docker manifest create ${{ steps.prep.outputs.image }}:${AMD64}-latest ${AMD64}
-          docker manifest push ${{ steps.prep.outputs.image }}:${AMD64}-latest
-          echo "*** Push Latest Tag Images ***"
+          echo "*** Push Latest Tag Image ***"
+          docker manifest create ${{ steps.prep.outputs.image }}:latest ${AMD64} ${ARM64} ${ARMV7}
+          docker manifest push ${{ steps.prep.outputs.image }}:latest
