@@ -5,7 +5,17 @@
 [rtorrent](https://github.com/rakshasa/rtorrent) is a popular bittorrent client with front-end Web-UI based on [rutorrent](https://github.com/Novik/ruTorrent).
 
 ## Supported Architectures
-Our images support multiple architectures such as `x86-64`, `arm64` and `armhf`. When you pull the image, it will get the one appropriate for your system architecture.
+These images support multiple architectures such as `x86-64`, `arm64` and `armhf` using Docker manifest.
+
+When you pull `xxacielxx/rutorrent`, will get the arch for your system.
+
+The architectures supported by this image are:
+
+| Architecture | Tag |
+| :----: | --- |
+| x86-64 | amd64-latest |
+| arm64 | arm64v8-latest |
+| armhf | arm32v7-latest |
 
 ### This is a clone of the [crazymax/rtorrent-rutorrent](https://hub.docker.com/crazymax/rtorrent-rutorrent) container with the following modifications:
 - Stop creation of `/downloads{/completed,/temp}` directories
