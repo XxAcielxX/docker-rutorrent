@@ -37,7 +37,7 @@ jobs:
           docker buildx build \
           --label ${{ steps.prep.outputs.created }} \
           -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-arm32v7" \
-          --platform linux/arm/v7 -f ./Dockerfile.armhf\
+          --platform linux/arm/v7 -f ./Dockerfile.armhf \
           --push .
       -
         name: Build Image & Push arm64v8
@@ -45,7 +45,7 @@ jobs:
           docker buildx build \
           --label ${{ steps.prep.outputs.created }} \
           -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-arm64v8" \
-          --platform linux/arm64 -f ./\
+          --platform linux/arm64 -f ./Dockerfile.arm64 \
           --push .
       -
         name: Build Image & Push amd64
