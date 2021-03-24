@@ -68,7 +68,5 @@ jobs:
           [[ -f Dockerfile.armhf ]] && ARMV7=${{ steps.prep.outputs.image }}:arm32v7-latest
           docker manifest create ${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag}} ${AMD64} ${ARM64} ${ARMV7}
           docker manifest push ${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag}}
-          if [[ ${{ steps.prep.outputs.gittag}} == release ]]; then
           docker manifest create ${{ steps.prep.outputs.image }}:latest ${AMD64} ${ARM64} ${ARMV7}
-          docker manifest push   ${{ steps.prep.outputs.image }}:latest
-          fi
+          docker manifest push ${{ steps.prep.outputs.image }}:latest
