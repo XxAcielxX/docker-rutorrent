@@ -58,4 +58,4 @@ docker run -d --name rutorrent \
 * `9000`: WebDAV port on completed downloads
 * `50000`: Incoming connections (`network.port_range.set`)
 
-#### For other configurations and details, kindly visit the [crazymax/rtorrent-rutorrent](https://github.com/crazy-max/docker-rtorrent-rutorrent) Github.
+#### For other configurations and details, kindly visit the [crazymax/rtorrent-rutorrent](https://github.com/crazy-max/docker-rtorrent-rutorrent).
