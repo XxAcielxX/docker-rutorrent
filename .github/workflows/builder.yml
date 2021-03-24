@@ -67,3 +67,10 @@ jobs:
           docker manifest create ${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }} ${AMD64} ${ARM64} ${ARMV7}
           docker manifest push ${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}
           echo "*** Push Architecture Latest Images ***"
+          docker manifest create ${{ steps.prep.outputs.image }}:${ARMV7}-latest ${ARMV7}
+          docker manifest push ${{ steps.prep.outputs.image }}:${ARMV7}-latest
+          docker manifest create ${{ steps.prep.outputs.image }}:${ARM64}-latest ${ARM64}
+          docker manifest push ${{ steps.prep.outputs.image }}:${ARM64}-latest
+          docker manifest create ${{ steps.prep.outputs.image }}:${AMD64}-latest ${AMD64}
+          docker manifest push ${{ steps.prep.outputs.image }}:${AMD64}-latest
+          echo "*** Push Latest Tag Images ***"
