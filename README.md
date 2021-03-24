@@ -1,7 +1,8 @@
 # [xxacielxx/rutorrent](https://github.com/XxAcielxX/rutorrent/)
 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/XxAcielxX/rutorrent?color=%23D66909&logo=github&style=for-the-badge)
-![Docker Pulls](https://img.shields.io/docker/pulls/xxacielxx/rutorrent?color=%23D66909&label=Pulls&logo=docker&logoColor=%23FFFFFF&style=for-the-badge)
+![GitHub Repo stars](https://img.shields.io/github/stars/XxAcielxX/rutorrent?color=E66000&logo=Github&style=for-the-badge)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/XxAcielxX/rutorrent?color=%23E66000&color0=%23ff0000&logo=github&style=for-the-badge)
+![Docker Pulls](https://img.shields.io/docker/pulls/xxacielxx/rutorrent?color=%23E66000&label=Pulls&logo=docker&logoColor=%23FFFFFF&style=for-the-badge)
 
 <img src="https://github.com/XxAcielxX/rutorrent/raw/main/root/rutorrent.jpg?raw=true" width="60%" height="60%"/>
 
