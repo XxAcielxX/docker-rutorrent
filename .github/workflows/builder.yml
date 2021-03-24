@@ -63,13 +63,7 @@ jobs:
           [[ -f Dockerfile ]] && AMD64=${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-amd64
           [[ -f Dockerfile.arm64 ]] && ARM64=${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-arm64v8
           [[ -f Dockerfile.armhf ]] && ARMV7=${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-arm32v7
-          docker manifest create ${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag}} ${AMD64} ${ARM64} ${ARMV7}
-          docker manifest push ${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag}}
-          docker manifest create ${{ steps.prep.outputs.image }}:${ARMV7}-latest ${ARMV7}
-          docker manifest push ${{ steps.prep.outputs.image }}:${ARMV7}-latest
-          docker manifest create ${{ steps.prep.outputs.image }}:${ARM64}-latest ${ARM64}
-          docker manifest push ${{ steps.prep.outputs.image }}:${ARM64}-latest
-          docker manifest create ${{ steps.prep.outputs.image }}:${AMD64}-latest ${AMD64}
-          docker manifest push ${{ steps.prep.outputs.image }}:${AMD64}-latest
-          docker manifest create ${{ steps.prep.outputs.image }}:latest ${AMD64} ${ARM64} ${ARMV7}
-          docker manifest push ${{ steps.prep.outputs.image }}:latest
+          echo "*** Push GitTag Images ***"
+          docker manifest create ${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }} ${AMD64} ${ARM64} ${ARMV7}
+          docker manifest push ${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}
+          echo "*** Push Architecture Latest Images ***"
