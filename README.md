@@ -46,7 +46,7 @@ docker run -d --name rutorrent \
 
 ## Volumes
 * `/data`: rTorrent / ruTorrent config, session files, log, ...
-* `/downloads`: Downloaded files
+* `/downloads`: Downloads directory
 * `/passwd`: Contains htpasswd files for basic auth
 
 > :warning: Note that the volumes should be owned by the user/group with the specified `PUID` and `PGID`. If you don't
