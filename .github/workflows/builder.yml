@@ -37,9 +37,7 @@ jobs:
           docker buildx build \
           --label ${{ steps.prep.outputs.created }} \
           -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-arm32v7" \
-          -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}" \
           -t "${{ steps.prep.outputs.image }}:arm32v7-latest" \
-          -t "${{ steps.prep.outputs.image }}:latest" \
           --platform linux/arm/v7 -f ./Dockerfile.armhf \
           --push .
       -
@@ -48,9 +46,7 @@ jobs:
           docker buildx build \
           --label ${{ steps.prep.outputs.created }} \
           -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-arm64v8" \
-          -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}" \
           -t "${{ steps.prep.outputs.image }}:arm64v8-latest" \
-          -t "${{ steps.prep.outputs.image }}:latest" \
           --platform linux/arm64 -f ./Dockerfile.arm64 \
           --push .
       -
@@ -58,9 +54,17 @@ jobs:
         run: |
           docker buildx build \
           --label ${{ steps.prep.outputs.created }} \
-          -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-amd64 " \
-          -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}" \
+          -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-amd64" \
           -t "${{ steps.prep.outputs.image }}:amd64-latest" \
-          -t "${{ steps.prep.outputs.image }}:latest" \
           --platform linux/amd64 -f ./Dockerfile \
           --push .
+      -
+        name: Create manifests
+        env:
+          DOCKER_CLI_EXPERIMENTAL: enabled
+        run: |
+          [[ -f Dockerfile ]] && AMD64=${{ steps.prep.outputs.image }}:amd64-latest
+          [[ -f Dockerfile.arm64 ]] && ARM64=${{ steps.prep.outputs.image }}:arm64v8-latest
+          [[ -f Dockerfile.armhf ]] && ARMV7=${{ steps.prep.outputs.image }}:arm32v7-latest
+          docker manifest create ${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag}} ${AMD64} ${ARM64} ${ARMV7}
+          docker manifest push ${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag}}
