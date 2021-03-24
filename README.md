@@ -1,5 +1,8 @@
 # [xxacielxx/rutorrent](https://github.com/XxAcielxX/rutorrent/)
 
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/XxAcielxX/rutorrent?color=%23D66909&logo=github&style=for-the-badge)
+![Docker Pulls](https://img.shields.io/docker/pulls/xxacielxx/rutorrent?color=%23D66909&label=Pulls&logo=docker&logoColor=%23FFFFFF&style=for-the-badge)
+
 <img src="https://github.com/XxAcielxX/rutorrent/raw/main/root/rutorrent.jpg?raw=true" width="60%" height="60%"/>
 
 [rtorrent](https://github.com/rakshasa/rtorrent) is a popular bittorrent client with front-end Web-UI based on [rutorrent](https://github.com/Novik/ruTorrent).
