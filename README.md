@@ -4,6 +4,13 @@
 
 [rtorrent](https://github.com/rakshasa/rtorrent) is a popular bittorrent client with front-end Web-UI based on [rutorrent](https://github.com/Novik/ruTorrent).
 
+## This is a clone of the [crazymax/rtorrent-rutorrent](https://hub.docker.com/crazymax/rtorrent-rutorrent) container with the following modifications:
+- Stop creation of `/downloads{/completed,/temp}` directories
+- Disabled Healthchecks
+- Changed Default Downloads directory to `/downloads`
+- Disabled move of completed torrents
+- Tuned off `PEX` & `system.umask.set` (in `.rtorrent.rc`)
+
 ## Supported Architectures
 These images support multiple architectures such as `x86-64`, `arm64` and `armhf` using Docker manifest.
 
@@ -17,15 +24,8 @@ The architectures supported by this image are:
 | arm64 | arm64v8-latest |
 | armhf | arm32v7-latest |
 
-### This is a clone of the [crazymax/rtorrent-rutorrent](https://hub.docker.com/crazymax/rtorrent-rutorrent) container with the following modifications:
-- Stop creation of `/downloads{/completed,/temp}` directories
-- Disabled Healthchecks
-- Changed Default Downloads directory to `/downloads`
-- Disabled move of completed torrents
-- Tuned off `PEX` & `system.umask.set` (in `.rtorrent.rc`)
-
 ## Usage
-````shell
+```shell
 mkdir data downloads passwd
 chown ${PUID}:${PGID} data downloads passwd
 
@@ -42,7 +42,7 @@ docker run -d --name rutorrent \
   -v $(pwd)/passwd:/passwd \
   --restart unless-stopped \
   xxacielxx/rutorrent
-````
+```
 
 ## Volumes
 * `/data`: rTorrent / ruTorrent config, session files, log, ...
