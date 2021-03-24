@@ -40,6 +40,7 @@ docker run -d --name rutorrent \
   -v $(pwd)/data:/data \
   -v $(pwd)/downloads:/downloads \
   -v $(pwd)/passwd:/passwd \
+  --restart unless-stopped \
   xxacielxx/rutorrent
 ````
 
