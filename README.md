@@ -32,6 +32,8 @@ chown ${PUID}:${PGID} data downloads passwd
 docker run -d --name rutorrent \
   --ulimit nproc=65535 \
   --ulimit nofile=32000:40000 \
+  -e PUID=1000 \
+  -e PGID=1000 \
   -p 6881:6881/udp \
   -p 8000:8000 \
   -p 8080:8080 \
@@ -59,4 +61,4 @@ docker run -d --name rutorrent \
 * `9000`: WebDAV port on completed downloads
 * `50000`: Incoming connections (`network.port_range.set`)
 
-#### For other configurations and details, kindly visit the [crazymax/rtorrent-rutorrent](https://github.com/crazy-max/docker-rtorrent-rutorrent).
+#### For other configurations and details, kindly visit [crazymax/rtorrent-rutorrent](https://github.com/crazy-max/docker-rtorrent-rutorrent).
