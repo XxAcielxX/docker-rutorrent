@@ -1,8 +1,8 @@
 # [xxacielxx/rutorrent](https://github.com/XxAcielxX/rutorrent/)
 
-![GitHub Repo stars](https://img.shields.io/github/stars/XxAcielxX/rutorrent?color=E66000&logo=Github&style=for-the-badge)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/XxAcielxX/rutorrent?color=%23E66000&color0=%23ff0000&logo=github&style=for-the-badge)
-![Docker Pulls](https://img.shields.io/docker/pulls/xxacielxx/rutorrent?color=%23E66000&label=Pulls&logo=docker&logoColor=%23FFFFFF&style=for-the-badge)
+![GitHub Repo stars](https://img.shields.io/github/stars/XxAcielxX/rutorrent?color=E66000&labelColor=353535&logo=Github&style=for-the-badge)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/XxAcielxX/rutorrent?color=E66000&labelColor=353535&color0=FF0000&logo=github&style=for-the-badge)
+![Docker Pulls](https://img.shields.io/docker/pulls/xxacielxx/rutorrent?color=E66000&labelColor=353535&label=Pulls&logo=docker&logoColor=FFFFFF&style=for-the-badge)
 
 <img src="https://github.com/XxAcielxX/rutorrent/raw/main/root/rutorrent.jpg?raw=true" width="60%" height="60%"/>
 
@@ -43,17 +43,17 @@ docker run -d --name rutorrent \
   -p 8080:8080 \
   -p 9000:9000 \
   -p 50000:50000 \
-  -v $(pwd)/data:/data \
-  -v $(pwd)/downloads:/downloads \
-  -v $(pwd)/passwd:/passwd \
+  -v <path/to/rutorrent/data>:/data \
+  -v <path/to/rutorrent/passwd>:/passwd \
+  -v <path/to/downloads>:/downloads \
   --restart unless-stopped \
   xxacielxx/rutorrent
 ```
 
 ## Volumes
 * `/data`: rTorrent / ruTorrent config, session files, log, ...
+* `/passwd`: Contains htpasswd files for basic auth (web-ui, rpc & webdav)
 * `/downloads`: Downloads directory
-* `/passwd`: Contains htpasswd files for basic auth
 
 > :warning: Note that the volumes should be owned by the user/group with the specified `PUID` and `PGID`. If you don't
 > give the volumes correct permissions, the container may not start or function properly.
