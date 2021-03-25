@@ -1,7 +1,8 @@
 FROM crazymax/rtorrent-rutorrent:latest
 
 # set labels
-LABEL maintainer="XxAcielxX"
+LABEL org.opencontainers.image.url="https://hub.docker.com/r/xxacielxx/rutorrent"
+LABEL org.opencontainers.image.source="https://github.com/XxAcielxX/rutorrent"
 
 # modifications
 RUN \
