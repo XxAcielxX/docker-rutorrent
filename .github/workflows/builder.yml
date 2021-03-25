@@ -47,34 +47,32 @@ jobs:
         name: Build Image & Push arm32v7
         run: |
           docker buildx build \
-          --label ${{ steps.leb.outputs.vendor }} --label ${{ steps.leb.outputs.title }} --label ${{ steps.leb.outputs.version }} \
-          --label ${{ steps.leb.outputs.revision }} --label ${{ steps.leb.outputs.created }} --label ${{ steps.leb.outputs.desc }} \
-          --label ${{ steps.leb.outputs.iurl }} --label ${{ steps.leb.outputs.isource }} --label ${{ steps.leb.outputs.lic }} \
           -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-arm32v7" \
           -t "${{ steps.prep.outputs.image }}:arm32v7-latest" \
-          --platform linux/arm/v7 -f ./Dockerfile.armhf \
-          --push .
+          --platform linux/arm/v7 -f ./Dockerfile.armhf --push \
+          --label ${{ steps.leb.outputs.vendor }} --label ${{ steps.leb.outputs.title }} --label ${{ steps.leb.outputs.version }} \
+          --label ${{ steps.leb.outputs.revision }} --label ${{ steps.leb.outputs.created }} --label ${{ steps.leb.outputs.desc }} \
+          --label ${{ steps.leb.outputs.iurl }} --label ${{ steps.leb.outputs.isource }} --label ${{ steps.leb.outputs.lic }} .
       -
         name: Build Image & Push arm64v8
         run: |
           docker buildx build \
-          --label ${{ steps.leb.outputs.vendor }} --label ${{ steps.leb.outputs.title }} --label ${{ steps.leb.outputs.version }} \
-          --label ${{ steps.leb.outputs.revision }} --label ${{ steps.leb.outputs.created }} --label ${{ steps.leb.outputs.desc }} \
-          --label ${{ steps.leb.outputs.iurl }} --label ${{ steps.leb.outputs.isource }} --label ${{ steps.leb.outputs.lic }} \
           -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-arm64v8" \
           -t "${{ steps.prep.outputs.image }}:arm64v8-latest" \
-          --platform linux/arm64 -f ./Dockerfile.arm64 \
-          --push .
+          --platform linux/arm64 -f ./Dockerfile.arm64 --push \
+          --label ${{ steps.leb.outputs.vendor }} --label ${{ steps.leb.outputs.title }} --label ${{ steps.leb.outputs.version }} \
+          --label ${{ steps.leb.outputs.revision }} --label ${{ steps.leb.outputs.created }} --label ${{ steps.leb.outputs.desc }} \
+          --label ${{ steps.leb.outputs.iurl }} --label ${{ steps.leb.outputs.isource }} --label ${{ steps.leb.outputs.lic }} .
       -
         name: Build Image & Push amd64
         run: |
           docker buildx build \
+          -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-amd64" \
+          -t "${{ steps.prep.outputs.image }}:amd64-latest" \
+          --platform linux/amd64 -f ./Dockerfile --push \
           --label ${{ steps.leb.outputs.vendor }} --label ${{ steps.leb.outputs.title }} --label ${{ steps.leb.outputs.version }} \
           --label ${{ steps.leb.outputs.revision }} --label ${{ steps.leb.outputs.created }} --label ${{ steps.leb.outputs.desc }} \
-          --label ${{ steps.leb.outputs.iurl }} --label ${{ steps.leb.outputs.isource }} --label ${{ steps.leb.outputs.lic }} \          -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-amd64" \
-          -t "${{ steps.prep.outputs.image }}:amd64-latest" \
-          --platform linux/amd64 -f ./Dockerfile \
-          --push .
+          --label ${{ steps.leb.outputs.iurl }} --label ${{ steps.leb.outputs.isource }} --label ${{ steps.leb.outputs.lic }} .
       -
         name: Create manifests
         env:
