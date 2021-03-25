@@ -45,7 +45,7 @@ jobs:
         name: Build Image & Push arm32v7
         run: |
           docker buildx build \
-          --label ${{ steps.leb.name.created }} --label ${{ steps.leb.name.version }} --label ${{ steps.leb.name.revision }} \
+          --label ${{ steps.leb.outputs.created }} --label ${{ steps.leb.outputs.version }} --label ${{ steps.leb.outputs.revision }} \
           -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-arm32v7" \
           -t "${{ steps.prep.outputs.image }}:arm32v7-latest" \
           --platform linux/arm/v7 -f ./Dockerfile.armhf --push .
