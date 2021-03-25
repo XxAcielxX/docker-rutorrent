@@ -45,7 +45,7 @@ jobs:
         name: Build Image & Push arm32v7
         run: |
           docker buildx build \
-          --label ${{ steps.leb.name.created }} --label ${{ steps.leb.name.revision }} \
+          --label ${{ steps.leb.name.created }} --label ${{ steps.leb.name.version }} --label ${{ steps.leb.name.revision }} \
           -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-arm32v7" \
           -t "${{ steps.prep.outputs.image }}:arm32v7-latest" \
           --platform linux/arm/v7 -f ./Dockerfile.armhf --push .
@@ -53,7 +53,7 @@ jobs:
         name: Build Image & Push arm64v8
         run: |
           docker buildx build \
-          --label ${{ steps.leb.name.created }} --label ${{ steps.leb.name.revision }} \
+          --label ${{ steps.leb.name.created }} --label ${{ steps.leb.name.version }} --label ${{ steps.leb.name.revision }} \
           -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-arm64v8" \
           -t "${{ steps.prep.outputs.image }}:arm64v8-latest" \
           --platform linux/arm64 -f ./Dockerfile.arm64 --push .
@@ -61,7 +61,7 @@ jobs:
         name: Build Image & Push amd64
         run: |
           docker buildx build \
-          --label ${{ steps.leb.name.created }} --label ${{ steps.leb.name.revision }} \
+          --label ${{ steps.leb.name.created }} --label ${{ steps.leb.name.version }} --label ${{ steps.leb.name.revision }} \
           -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-amd64" \
           -t "${{ steps.prep.outputs.image }}:amd64-latest" \
           --platform linux/amd64 -f ./Dockerfile --push .
