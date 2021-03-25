@@ -31,7 +31,7 @@ jobs:
           echo ::set-output name=iurl::"--label org.opencontainers.image.url=https://hub.docker.com/r/xxacielxx/rutorrent"
           echo ::set-output name=isource::"--label org.opencontainers.image.source=https://github.com/XxAcielxX/rutorrent"
           echo ::set-output name=lic::"--label org.opencontainers.image.licenses=MIT"
-          echo ::set-output name=labels::"${{ steps.leb.outputs.vendor }} ${{ steps.leb.outputs.title }} ${{ steps.leb.outputs.version }} ${{ steps.leb.outputs.revision }} ${{ steps.leb.outputs.created }} ${{ steps.leb.outputs.desc }} ${{ steps.leb.outputs.iurl }} ${{ steps.leb.outputs.isource }} ${{ steps.leb.outputs.lic }}
+          echo ::set-output name=labels::"${{ steps.leb.outputs.vendor }} ${{ steps.leb.outputs.title }} ${{ steps.leb.outputs.version }} ${{ steps.leb.outputs.revision }} ${{ steps.leb.outputs.created }} ${{ steps.leb.outputs.desc }} ${{ steps.leb.outputs.iurl }} ${{ steps.leb.outputs.isource }} ${{ steps.leb.outputs.lic }}"
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
