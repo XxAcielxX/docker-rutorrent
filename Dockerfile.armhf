@@ -3,9 +3,9 @@ FROM crazymax/rtorrent-rutorrent:latest
 # set labels
 LABEL org.opencontainers.image.vendor="XxAcielxX"
 LABEL org.opencontainers.image.title="ruTorrent"
-LABEL org.opencontainers.image.version="steps.prep.outputs.gittag"
-LABEL org.opencontainers.image.revision="GITHUB_SHA"
-LABEL org.opencontainers.image.created="date -u +'%Y-%m-%dT%H:%M:%SZ'"
+LABEL org.opencontainers.image.version="${{ steps.prep.outputs.gittag }}"
+LABEL org.opencontainers.image.revision="${GITHUB_SHA::12}"
+LABEL org.opencontainers.image.created="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
 LABEL org.opencontainers.image.description="rTorrent + ruTorrent Docker based container"
 LABEL org.opencontainers.image.url="https://hub.docker.com/r/xxacielxx/rutorrent"
 LABEL org.opencontainers.image.source="https://github.com/XxAcielxX/rutorrent"
