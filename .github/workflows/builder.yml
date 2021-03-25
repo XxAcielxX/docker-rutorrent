@@ -31,7 +31,6 @@ jobs:
           echo ::set-output name=iurl::"--label org.opencontainers.image.url=https://hub.docker.com/r/xxacielxx/rutorrent"
           echo ::set-output name=isource::"--label org.opencontainers.image.source=https://github.com/XxAcielxX/rutorrent"
           echo ::set-output name=lic::"--label org.opencontainers.image.licenses=MIT"
-          echo ::set-output name=labels::"${{ steps.leb.outputs.vendor }} ${{ steps.leb.outputs.title }} ${{ steps.leb.outputs.version }} ${{ steps.leb.outputs.revision }} ${{ steps.leb.outputs.created }} ${{ steps.leb.outputs.desc }} ${{ steps.leb.outputs.iurl }} ${{ steps.leb.outputs.isource }} ${{ steps.leb.outputs.lic }}"
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -48,7 +47,9 @@ jobs:
         name: Build Image & Push arm32v7
         run: |
           docker buildx build \
-          ${{ steps.leb.outputs.labels }}  \
+          --label ${{ steps.leb.outputs.vendor }} --label ${{ steps.leb.outputs.title }} --label ${{ steps.leb.outputs.version }} \
+          --label ${{ steps.leb.outputs.revision }} --label ${{ steps.leb.outputs.created }} --label ${{ steps.leb.outputs.desc }} \
+          --label ${{ steps.leb.outputs.iurl }} --label ${{ steps.leb.outputs.isource }} --label ${{ steps.leb.outputs.lic }} \
           -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-arm32v7" \
           -t "${{ steps.prep.outputs.image }}:arm32v7-latest" \
           --platform linux/arm/v7 -f ./Dockerfile.armhf \
@@ -57,7 +58,9 @@ jobs:
         name: Build Image & Push arm64v8
         run: |
           docker buildx build \
-          ${{ steps.leb.outputs.labels }}  \
+          --label ${{ steps.leb.outputs.vendor }} --label ${{ steps.leb.outputs.title }} --label ${{ steps.leb.outputs.version }} \
+          --label ${{ steps.leb.outputs.revision }} --label ${{ steps.leb.outputs.created }} --label ${{ steps.leb.outputs.desc }} \
+          --label ${{ steps.leb.outputs.iurl }} --label ${{ steps.leb.outputs.isource }} --label ${{ steps.leb.outputs.lic }} \
           -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-arm64v8" \
           -t "${{ steps.prep.outputs.image }}:arm64v8-latest" \
           --platform linux/arm64 -f ./Dockerfile.arm64 \
@@ -66,8 +69,9 @@ jobs:
         name: Build Image & Push amd64
         run: |
           docker buildx build \
-          ${{ steps.leb.outputs.labels }}  \
-          -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-amd64" \
+          --label ${{ steps.leb.outputs.vendor }} --label ${{ steps.leb.outputs.title }} --label ${{ steps.leb.outputs.version }} \
+          --label ${{ steps.leb.outputs.revision }} --label ${{ steps.leb.outputs.created }} --label ${{ steps.leb.outputs.desc }} \
+          --label ${{ steps.leb.outputs.iurl }} --label ${{ steps.leb.outputs.isource }} --label ${{ steps.leb.outputs.lic }} \          -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-amd64" \
           -t "${{ steps.prep.outputs.image }}:amd64-latest" \
           --platform linux/amd64 -f ./Dockerfile \
           --push .
