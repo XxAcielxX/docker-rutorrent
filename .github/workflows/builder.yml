@@ -18,7 +18,20 @@ jobs:
         run: |
           echo ::set-output name=image::${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}
           echo ::set-output name=gittag::${GITHUB_REF#refs/*/}
-          echo ::set-output name=created::"org.opencontainers.image.created=$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+      -
+        name: Labels Stage
+        id: leb
+        run: |
+          echo ::set-output name=vendor::"--label org.opencontainers.image.vendor=XxAcielxX"
+          echo ::set-output name=title::"--label org.opencontainers.image.title=ruTorrent"
+          echo ::set-output name=version::"--label org.opencontainers.image.version=${{ steps.prep.outputs.gittag }}"
+          echo ::set-output name=revision::"--label org.opencontainers.image.revision=${GITHUB_SHA}"
+          echo ::set-output name=created::"--label org.opencontainers.image.created=$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          echo ::set-output name=desc::"--label org.opencontainers.image.description=rTorrent + ruTorrent Docker based container"
+          echo ::set-output name=iurl::"--label org.opencontainers.image.url=https://hub.docker.com/r/xxacielxx/rutorrent"
+          echo ::set-output name=isource::"--label org.opencontainers.image.source=https://github.com/XxAcielxX/rutorrent"
+          echo ::set-output name=lic::"--label org.opencontainers.image.licenses=MIT"
+          echo ::set-output name=labels::"${{ steps.leb.outputs.vendor }} ${{ steps.leb.outputs.title }} ${{ steps.leb.outputs.version }} ${{ steps.leb.outputs.revision }} ${{ steps.leb.outputs.created }} ${{ steps.leb.outputs.desc }} ${{ steps.leb.outputs.iurl }} ${{ steps.leb.outputs.isource }} ${{ steps.leb.outputs.lic }}
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -35,7 +48,7 @@ jobs:
         name: Build Image & Push arm32v7
         run: |
           docker buildx build \
-          --label ${{ steps.prep.outputs.created }} \
+          ${{ steps.leb.outputs.labels }}  \
           -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-arm32v7" \
           -t "${{ steps.prep.outputs.image }}:arm32v7-latest" \
           --platform linux/arm/v7 -f ./Dockerfile.armhf \
@@ -44,7 +57,7 @@ jobs:
         name: Build Image & Push arm64v8
         run: |
           docker buildx build \
-          --label ${{ steps.prep.outputs.created }} \
+          ${{ steps.leb.outputs.labels }}  \
           -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-arm64v8" \
           -t "${{ steps.prep.outputs.image }}:arm64v8-latest" \
           --platform linux/arm64 -f ./Dockerfile.arm64 \
@@ -53,7 +66,7 @@ jobs:
         name: Build Image & Push amd64
         run: |
           docker buildx build \
-          --label ${{ steps.prep.outputs.created }} \
+          ${{ steps.leb.outputs.labels }}  \
           -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-amd64" \
           -t "${{ steps.prep.outputs.image }}:amd64-latest" \
           --platform linux/amd64 -f ./Dockerfile \
