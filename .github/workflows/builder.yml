@@ -22,15 +22,15 @@ jobs:
         name: Labels Stage
         id: leb
         run: |
-          echo ::set-output name=vendor::"org.opencontainers.image.vendor=XxAcielxX"
-          echo ::set-output name=title::"org.opencontainers.image.title=ruTorrent"
-          echo ::set-output name=version::"org.opencontainers.image.version=${{ steps.prep.outputs.gittag }}"
-          echo ::set-output name=revision::"org.opencontainers.image.revision=${GITHUB_SHA}"
-          echo ::set-output name=created::"org.opencontainers.image.created=$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
-          echo ::set-output name=desc::"org.opencontainers.image.description=rTorrent + ruTorrent Docker based container"
-          echo ::set-output name=iurl::"org.opencontainers.image.url=https://hub.docker.com/r/xxacielxx/rutorrent"
-          echo ::set-output name=isource::"org.opencontainers.image.source=https://github.com/XxAcielxX/rutorrent"
-          echo ::set-output name=lic::"org.opencontainers.image.licenses=MIT"
+          echo ::set-output name=vendor::org.opencontainers.image.vendor=XxAcielxX
+          echo ::set-output name=title::org.opencontainers.image.title=ruTorrent
+          echo ::set-output name=version::org.opencontainers.image.version=${{ steps.prep.outputs.gittag }}
+          echo ::set-output name=revision::org.opencontainers.image.revision=${GITHUB_SHA}
+          echo ::set-output name=created::org.opencontainers.image.created=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          echo ::set-output name=desc::org.opencontainers.image.description=rTorrent + ruTorrent Docker based container
+          echo ::set-output name=iurl::org.opencontainers.image.url=https://hub.docker.com/r/xxacielxx/rutorrent
+          echo ::set-output name=isource::org.opencontainers.image.source=https://github.com/XxAcielxX/rutorrent
+          echo ::set-output name=lic::org.opencontainers.image.licenses=MIT
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
