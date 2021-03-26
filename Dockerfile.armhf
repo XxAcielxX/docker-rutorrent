@@ -1,12 +1,12 @@
 FROM crazymax/rtorrent-rutorrent:latest
 
 # set labels
+LABEL maintainer=XxAcielxX
 LABEL org.opencontainers.image.vendor="XxAcielxX"
 LABEL org.opencontainers.image.title="ruTorrent"
 LABEL org.opencontainers.image.description="rTorrent + ruTorrent Docker based container"
 LABEL org.opencontainers.image.url="https://hub.docker.com/r/xxacielxx/rutorrent"
 LABEL org.opencontainers.image.source="https://github.com/XxAcielxX/rutorrent"
-LABEL org.opencontainers.image.licenses="MIT"
 
 # modifications
 RUN \
