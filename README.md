@@ -7,7 +7,7 @@
 
 <img src="https://github.com/XxAcielxX/rutorrent/raw/main/root/rutorrent.jpg?raw=true" width="60%" height="60%"/>
 
-[rtorrent](https://github.com/rakshasa/rtorrent) is a popular bittorrent client with front-end Web-UI based on [rutorrent](https://github.com/Novik/ruTorrent).
+[rtorrent](https://github.com/rakshasa/rtorrent) is a popular bittorrent client & [rutorrent](https://github.com/Novik/ruTorrent) Web-UI based front-end.
 
 ## This is a clone of the [crazy-max/rtorrent-rutorrent](https://github.com/crazy-max/docker-rtorrent-rutorrent) container with the following modifications:
 - Stop creation of `/downloads{/completed,/temp}` directories
@@ -21,7 +21,7 @@ These images support multiple architectures such as `x86-64`, `arm64` and `armhf
 
 When you pull `xxacielxx/rutorrent`, will get the arch for your system.
 
-The architectures supported by this image are:
+The supported architectures are:
 
 | Architecture | Tag |
 | :----: | --- |
@@ -32,7 +32,7 @@ The architectures supported by this image are:
 ## Usage
 ```shell
 mkdir data downloads passwd
-chown ${PUID}:${PGID} data downloads passwd
+chown 1000:1000 data downloads passwd
 
 docker run -d --name rutorrent \
   --ulimit nproc=65535 \
@@ -63,7 +63,7 @@ docker run -d --name rutorrent \
 * `6881`: DHT UDP port (`dht.port.set`)
 * `8000`: XMLRPC port through nginx over SCGI socket
 * `8080`: ruTorrent HTTP port
-* `9000`: WebDAV port on completed downloads
+* `9000`: WebDAV port on `/downloads`
 * `50000`: Incoming connections (`network.port_range.set`)
 
 #### For other configurations and details, kindly visit [crazymax/rtorrent-rutorrent](https://github.com/crazy-max/docker-rtorrent-rutorrent).
