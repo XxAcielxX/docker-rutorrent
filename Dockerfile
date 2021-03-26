@@ -1,7 +1,7 @@
 FROM crazymax/rtorrent-rutorrent:latest
 
 # set labels
-LABEL maintainer=XxAcielxX
+LABEL maintainer="XxAcielxX"
 LABEL org.opencontainers.image.vendor="XxAcielxX"
 LABEL org.opencontainers.image.title="ruTorrent"
 LABEL org.opencontainers.image.description="rTorrent + ruTorrent Docker based container"
