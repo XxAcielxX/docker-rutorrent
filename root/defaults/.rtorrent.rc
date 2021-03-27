@@ -51,7 +51,7 @@ protocol.encryption.set = allow_incoming,try_outgoing,enable_retry
 encoding.add = UTF-8
 
 # Default download directory for torrents
-directory.default.set = /downloads
+directory.default.set = (cat,(cfg.download))
 
 # Watch a directory for new torrents, and stop those that have been deleted
 schedule2 = watch_directory, 1, 1, (cat,"load.start=",(cfg.watch),"*.torrent")
