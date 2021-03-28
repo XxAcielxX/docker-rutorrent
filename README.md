@@ -1,4 +1,4 @@
-# [xxacielxx/rutorrent](https://github.com/XxAcielxX/rutorrent/)
+# [XxAcielxX/docker-rutorrent](https://github.com/XxAcielxX/docker-rutorrent)
  
 [![GitHub Repo stars](https://img.shields.io/github/stars/XxAcielxX/rutorrent?color=E66000&labelColor=353535&logo=Github&style=for-the-badge)](https://github.com/XxAcielxX/docker-rutorrent)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/XxAcielxX/rutorrent?color=E66000&labelColor=353535&color0=FF0000&logo=github&style=for-the-badge)](https://github.com/XxAcielxX/docker-rutorrent/releases)
