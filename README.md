@@ -31,6 +31,38 @@ The supported architectures are:
 | armhf | arm32v7-latest |
 
 ## Usage
+
+Here are some example snippets to help you get started creating a container.
+
+### docker-compose ([recommended](https://docs.docker.com/compose))
+
+Compatible with docker-compose v2 schemas.
+
+```yaml
+---
+version: "2.1"
+services:
+  rutorrent:
+    image: xxacielxx/rutorrent
+    container_name: rutorrent
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - </path/to/rutorrent/data>:/data
+      - </path/to/rutorrent/passwd>:/passwd
+      - </path/to/downloads>:/downloads
+    ports:
+      - 6881:6881/udp
+      - 8000:8000
+      - 8080:8080
+      - 9000:9000
+      - 50000:50000
+    restart: unless-stopped
+```
+
+### docker cli
 ```shell
 mkdir data downloads passwd
 chown 1000:1000 data downloads passwd
@@ -40,6 +72,7 @@ docker run -d --name rutorrent \
   --ulimit nofile=32000:40000 \
   -e PUID=1000 \
   -e PGID=1000 \
+  -e TZ=Europe/London \
   -p 6881:6881/udp \
   -p 8000:8000 \
   -p 8080:8080 \
