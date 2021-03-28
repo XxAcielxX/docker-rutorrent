@@ -10,7 +10,7 @@
 
 [rtorrent](https://github.com/rakshasa/rtorrent) is a popular bittorrent client & [rutorrent](https://github.com/Novik/ruTorrent) Web-UI based front-end.
 
-## This is a clone of the [crazy-max/rtorrent-rutorrent](https://github.com/crazy-max/docker-rtorrent-rutorrent) container with the following modifications:
+## This is a clone of the [crazy-max/docker-rtorrent-rutorrent](https://github.com/crazy-max/docker-rtorrent-rutorrent) container with the following modifications:
 - Stop creation of `/downloads{/completed,/temp}` directories
 - Disabled Healthchecks
 - Changed Default Downloads directory to `/downloads`
