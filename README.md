@@ -78,9 +78,9 @@ docker run -d --name rutorrent \
   -p 8080:8080 \
   -p 9000:9000 \
   -p 50000:50000 \
-  -v <path/to/rutorrent/data>:/data \
-  -v <path/to/rutorrent/passwd>:/passwd \
-  -v <path/to/downloads>:/downloads \
+  -v </path/to/rutorrent/data>:/data \
+  -v </path/to/rutorrent/passwd>:/passwd \
+  -v </path/to/downloads>:/downloads \
   --restart unless-stopped \
   xxacielxx/rutorrent
 ```
