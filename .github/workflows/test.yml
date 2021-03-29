@@ -22,13 +22,9 @@ jobs:
         name: Labels Stage
         id: leb
         run: |
-          echo ::set-output name=vendor::org.opencontainers.image.vendor=XxAcielxX
-          echo ::set-output name=title::org.opencontainers.image.title=ruTorrent
           echo ::set-output name=version::org.opencontainers.image.version=${{ steps.prep.outputs.gittag }}
           echo ::set-output name=revision::org.opencontainers.image.revision=${GITHUB_SHA}
           echo ::set-output name=created::org.opencontainers.image.created=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
-          echo ::set-output name=desc::org.opencontainers.image.description=rTorrent + ruTorrent Docker based container
-          echo ::set-output name=lic::org.opencontainers.image.licenses=MIT
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -44,7 +40,7 @@ jobs:
       -
         name: Build Image & Push arm64v8
         run: |
-          docker buildx build \
+          docker buildx build --no-cache --pull \
           --label ${{ steps.leb.outputs.created }} --label ${{ steps.leb.outputs.version }} --label ${{ steps.leb.outputs.revision }} \
-          -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-arm64v8" \
+          -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}" \
           --platform linux/arm64 -f ./Dockerfile.arm64 --push .
