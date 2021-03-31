@@ -67,7 +67,8 @@ services:
 mkdir data downloads passwd
 chown 1000:1000 data downloads passwd
 
-docker run -d --name rutorrent \
+docker run -d \
+  --name rutorrent \
   --ulimit nproc=65535 \
   --ulimit nofile=32000:40000 \
   -e PUID=1000 \
@@ -100,4 +101,20 @@ docker run -d --name rutorrent \
 * `9000`: WebDAV port on `/downloads`
 * `50000`: Incoming connections (`network.port_range.set`)
 
-#### For other configurations and details, kindly visit [crazymax/rtorrent-rutorrent](https://github.com/crazy-max/docker-rtorrent-rutorrent).
+## Updating
+
+### Via Docker Compose
+* Update all images: `docker-compose pull`
+  * or update a single image: `docker-compose pull rutorrent`
+* Let compose update all containers as necessary: `docker-compose up -d`
+  * or update a single container: `docker-compose up -d rutorrent`
+* You can also remove the old dangling images: `docker image prune`
+
+### Via Docker CLI
+* Update image: `docker pull xxacielxx/rutorrent`
+* Stop the running container: `docker stop rutorrent`
+* Delete the container: `docker rm rutorrent`
+* Recreate a new container with the same docker run parameters as instructed above (if mapped correctly to a host folder, your /config folder and settings will be preserved)
+  * You can also remove the old dangling images: docker image prune
+
+#### For full configurations and details, kindly visit [crazy-max/docker-rtorrent-rutorrent](https://github.com/crazy-max/docker-rtorrent-rutorrent).
