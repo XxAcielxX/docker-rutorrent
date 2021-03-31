@@ -114,7 +114,7 @@ docker run -d \
 * Update image: `docker pull xxacielxx/rutorrent`
 * Stop the running container: `docker stop rutorrent`
 * Delete the container: `docker rm rutorrent`
-* Recreate a new container with the same docker run parameters as instructed above (if mapped correctly to a host folder, your [ /data, /passwd & /downloads ] folder and settings will be preserved)
+* Recreate a new container with the same docker run parameters as instructed above (if mapped correctly to host folders, your `/data, /passwd, /downloads` folders and settings will be preserved)
   * You can also remove the old dangling images: docker image prune
 
 #### For full configurations and details, kindly visit [crazy-max/docker-rtorrent-rutorrent](https://github.com/crazy-max/docker-rtorrent-rutorrent).
