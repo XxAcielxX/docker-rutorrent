@@ -1,5 +1,10 @@
 # Changelog
 
+## v3.10-a03
+Base Image:
+* Initialize ruTorrent plugins ([#74](https://github.com/crazy-max/docker-rtorrent-rutorrent/issues/74))
+* Allow ports customization ([#73](https://github.com/crazy-max/docker-rtorrent-rutorrent/issues/73))
+
 ## v3.10-a02
 Fixed:
 * `sed -i -e` in Dockerfiles for `/downloads{completed,temp}` directories creating bug
