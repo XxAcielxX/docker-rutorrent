@@ -95,12 +95,11 @@ docker run -d \
 > give the volumes correct permissions, the container may not start or function properly.
 
 ## Ports
-* `6881`: DHT UDP port (`dht.port.set`)
-* `8000`: XMLRPC port through nginx over SCGI socket
-* `8080`: ruTorrent HTTP port
-* `9000`: WebDAV port on `/downloads`
-* `50000`: Incoming connections (`network.port_range.set`)
-
+* `6881` (or `RT_DHT_PORT`): DHT UDP port (`dht.port.set`)
+* `8000` (or `XMLRPC_PORT`): XMLRPC port through nginx over SCGI socket
+* `8080` (or `RUTORRENT_PORT`): ruTorrent HTTP port
+* `9000` (or `WEBDAV_PORT`): WebDAV port on `/downloads`
+* `50000` (or `RT_INC_PORT`): Incoming connections (`network.port_range.set`)
 ## Updating
 
 ### Via Docker Compose
