@@ -11,9 +11,9 @@ LABEL org.opencontainers.image.source="https://github.com/XxAcielxX/rutorrent"
 # modifications
 RUN \
  echo "**** apply patches for /downloads ****" && \
- sed -i -e '104s/themes [*\]/themes/' '/etc/cont-init.d/03-config.sh' && \
- sed -i '105,106d;320,321d' '/etc/cont-init.d/03-config.sh' && \
- sed -i -e '185s_[*/]_/downloads_' '/etc/cont-init.d/03-config.sh' && \
+ sed -i -e '127s/themes [*\]/themes/' '/etc/cont-init.d/03-config.sh' && \
+ sed -i '128,129d;343,344d' '/etc/cont-init.d/03-config.sh' && \
+ sed -i -e '205s_[*/]_/downloads_' '/etc/cont-init.d/03-config.sh' && \
  sed -i -e '5,23s/[*/]complete//' '/tpls/etc/nginx/conf.d/webdav.conf'
 COPY '/root/defaults/.rtorrent.rc' '/tpls/.rtorrent.rc'
 
