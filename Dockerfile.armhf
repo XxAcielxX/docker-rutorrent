@@ -10,13 +10,12 @@ LABEL org.opencontainers.image.source="https://github.com/XxAcielxX/rutorrent"
 
 # modifications
 RUN \
- echo "**** apply patches for /downloads ****" && \
- sed -i -e '128s/themes [*\]/themes/' '/etc/cont-init.d/03-config.sh' && \
- sed -i '129,130d;344,345d' '/etc/cont-init.d/03-config.sh' && \
- sed -i -e '206s_[*/]_/downloads_' '/etc/cont-init.d/03-config.sh' && \
+  echo "**** apply patches for /downloads ****" && \
+ sed -i -e '132s/themes [*\]/themes/' '/etc/cont-init.d/03-config.sh' && \
+ sed -i -e '216s_[*/]_/downloads_' '/etc/cont-init.d/03-config.sh' && \
+ sed -i '133,134d;349,350d' '/etc/cont-init.d/03-config.sh' && \
  sed -i -e '5,23s/[*/]complete//' '/tpls/etc/nginx/conf.d/webdav.conf'
 COPY '/root/defaults/.rtorrent.rc' '/tpls/.rtorrent.rc'
-
 VOLUME [ "/data", "/downloads", "/passwd" ]
 
 HEALTHCHECK NONE
