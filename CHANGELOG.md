@@ -1,5 +1,17 @@
 # Changelog
 
+## v3.10-a05
+Base Image:
+* Update dependencies ([#117](https://github.com/crazy-max/docker-rtorrent-rutorrent/issues/117))
+* Alpine Linux 3.14 ([#116](https://github.com/crazy-max/docker-rtorrent-rutorrent/issues/116))
+
+## v3.10-a04
+Base Image:
+* Add `AUTH_DELAY` env var ([#109](https://github.com/crazy-max/docker-rtorrent-rutorrent/issues/109))
+* Add `XMLRPC_SIZE_LIMIT` env var ([#107](https://github.com/crazy-max/docker-rtorrent-rutorrent/issues/107))
+* Add `posix` PHP extension ([#102](https://github.com/crazy-max/docker-rtorrent-rutorrent/issues/102))
+* `ifconfig.me` as fallback for automatic WAN_IP determination ([#96](https://github.com/crazy-max/docker-rtorrent-rutorrent/issues/96))
+
 ## v3.10-a03
 Base Image:
 * Initialize ruTorrent plugins ([#74](https://github.com/crazy-max/docker-rtorrent-rutorrent/issues/74))
