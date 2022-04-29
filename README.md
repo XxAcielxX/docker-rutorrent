@@ -43,7 +43,7 @@ Compatible with docker-compose v2 schemas.
 version: "2.1"
 services:
   rutorrent:
-    image: xxacielxx/rutorrent
+    image: xxacielxx/rutorrent:latest
     container_name: rutorrent
     environment:
       - PUID=1000
@@ -83,7 +83,7 @@ docker run -d \
   -v </path/to/rutorrent/passwd>:/passwd \
   -v </path/to/downloads>:/downloads \
   --restart unless-stopped \
-  xxacielxx/rutorrent
+  xxacielxx/rutorrent:latest
 ```
 
 ## Volumes
@@ -114,6 +114,6 @@ docker run -d \
 * Stop the running container: `docker stop rutorrent`
 * Delete the container: `docker rm rutorrent`
 * Recreate a new container with the same docker run parameters as instructed above (if mapped correctly to host folders, your `/data, /passwd, /downloads` folders and settings will be preserved)
-  * You can also remove the old dangling images: docker image prune
+  * You can also remove the old dangling images: `docker image prune`
 
 #### For full configurations and details, kindly visit [crazy-max/docker-rtorrent-rutorrent](https://github.com/crazy-max/docker-rtorrent-rutorrent).
