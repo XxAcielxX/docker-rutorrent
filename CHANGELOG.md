@@ -1,5 +1,16 @@
 # Changelog
 
+## v3.10-a07
+Base Image:
+* Opt-in `WAN_IP` and add `WAN_IP_CMD` env var ([#150](https://github.com/crazy-max/docker-rtorrent-rutorrent/issues/150), [#153](https://github.com/crazy-max/docker-rtorrent-rutorrent/issues/153))
+* Check plugins existence ([#155](https://github.com/crazy-max/docker-rtorrent-rutorrent/issues/155))
+* Option to disable Nginx access log ([#154](https://github.com/crazy-max/docker-rtorrent-rutorrent/issues/154))
+* Alpine Linux 3.15 ([#151](https://github.com/crazy-max/docker-rtorrent-rutorrent/issues/151))
+
+## v3.10-a06
+Fixed:
+* [#2](https://github.com/XxAcielxX/docker-rutorrent/issues/2) - When removing only torrent, data was also being deleted.
+
 ## v3.10-a05
 Base Image:
 * Update dependencies ([#117](https://github.com/crazy-max/docker-rtorrent-rutorrent/issues/117))
