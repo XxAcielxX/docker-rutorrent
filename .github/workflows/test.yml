@@ -43,4 +43,4 @@ jobs:
           docker buildx build --no-cache --pull \
           --label ${{ steps.leb.outputs.created }} --label ${{ steps.leb.outputs.version }} --label ${{ steps.leb.outputs.revision }} \
           -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}" \
-          --platform linux/arm64 -f ./Dockerfile.arm64 --push .
+          --platform linux/arm64/v8 -f ./Dockerfile.arm64 --push .
