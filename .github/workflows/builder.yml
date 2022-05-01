@@ -48,7 +48,7 @@ jobs:
           --label ${{ steps.leb.outputs.created }} --label ${{ steps.leb.outputs.version }} --label ${{ steps.leb.outputs.revision }} \
           -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-arm32v7" \
           -t "${{ steps.prep.outputs.image }}:arm32v7-latest" \
-          --platform linux/arm/v7 -f ./Dockerfile.armhf --push .
+          --platform linux/arm/v7 -f ./Dockerfile --push .
       -
         name: Build Image & Push arm64v8
         run: |
@@ -56,7 +56,7 @@ jobs:
           --label ${{ steps.leb.outputs.created }} --label ${{ steps.leb.outputs.version }} --label ${{ steps.leb.outputs.revision }} \
           -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-arm64v8" \
           -t "${{ steps.prep.outputs.image }}:arm64v8-latest" \
-          --platform linux/arm64 -f ./Dockerfile.arm64 --push .
+          --platform linux/arm64/v8 -f ./Dockerfile --push .
       -
         name: Build Image & Push amd64
         run: |
@@ -71,8 +71,8 @@ jobs:
           DOCKER_CLI_EXPERIMENTAL: enabled
         run: |
           [[ -f Dockerfile ]] && AMD64=${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-amd64
-          [[ -f Dockerfile.arm64 ]] && ARM64=${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-arm64v8
-          [[ -f Dockerfile.armhf ]] && ARMV7=${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-arm32v7
+          [[ -f Dockerfile ]] && ARM64=${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-arm64v8
+          [[ -f Dockerfile ]] && ARMV7=${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-arm32v7
           echo "*** Push GitTag Image ***"
           docker manifest create ${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }} ${AMD64} ${ARM64} ${ARMV7}
           docker manifest push ${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}
