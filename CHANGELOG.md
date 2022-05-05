@@ -1,8 +1,12 @@
 # Changelog
 
+## v3.10-a09
+Base Image:
+* Fix unrar not available since alpine 3.15 ([161](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/161))
+
 ## v3.10-a08
 Base Image:
-* Fix GeoIP2 ruTorrent plugin ([159](https://github.com/crazy-max/docker-rtorrent-rutorrent/issues/159))## v3.10-a08
+* Fix GeoIP2 ruTorrent plugin ([159](https://github.com/crazy-max/docker-rtorrent-rutorrent/issues/159))
 
 ## v3.10-a07
 Base Image:
