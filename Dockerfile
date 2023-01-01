@@ -15,7 +15,7 @@ RUN \
   sed -i -e '230s_[*/]_/downloads_' '/etc/cont-init.d/03-config.sh' && \
   sed -i '147,148d;371,372d' '/etc/cont-init.d/03-config.sh' && \
   sed -i -e '5,23s/[*/]complete//' '/tpls/etc/nginx/conf.d/webdav.conf' && \
-  sed -i -e '/pex\.set/s/yes/no/; /umask\.set/s/^/#/; /method\.insert/s/^/#/g; /finished,move/s/^/#/' '/tpls/.rtorrent.rc' && \
+  sed -i -e '/pex\.set/s/yes/no/; /umask\.set/s/^/#/; /56,63d' '/tpls/.rtorrent.rc' && \
   sed -i -e '/complete\//d; /temp\//d; /directory\.default/s/download_temp/download/' '/tpls/etc/rtorrent/.rtlocal.rc'
 
 VOLUME [ "/data", "/downloads", "/passwd" ]
