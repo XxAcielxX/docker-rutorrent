@@ -66,9 +66,6 @@ jobs:
         env:
           DOCKER_CLI_EXPERIMENTAL: enabled
         run: |
-         # [[ -f Dockerfile ]] && AMD64=${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-amd64
-         # [[ -f Dockerfile ]] && ARM64=${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-arm64v8
-         # [[ -f Dockerfile ]] && ARMV7=${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-arm32v7
           echo "*** Push GitTag Image ***"
           docker manifest create ${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }} ${AMD64} ${ARMV7} ${ARM64}
           docker manifest push ${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}
