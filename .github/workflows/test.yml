@@ -38,34 +38,9 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
       -
-        name: Build Image & Push amd64
+        name: Build Image & Push
         run: |
           docker buildx build \
           --label ${{ steps.leb.outputs.created }} --label ${{ steps.leb.outputs.version }} --label ${{ steps.leb.outputs.revision }} \
-          -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-amd64" \
-          -t "${{ steps.prep.outputs.image }}:amd64-latest" \
-          --platform linux/amd64 -f ./Dockerfile .
-      -
-        name: Build Image & Push arm32v7
-        run: |
-          docker buildx build \
-          --label ${{ steps.leb.outputs.created }} --label ${{ steps.leb.outputs.version }} --label ${{ steps.leb.outputs.revision }} \
-          -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-arm32v7" \
-          -t "${{ steps.prep.outputs.image }}:arm32v7-latest" \
-          --platform linux/arm/v7 -f ./Dockerfile .
-      -
-        name: Build Image & Push arm64v8
-        run: |
-          docker buildx build \
-          --label ${{ steps.leb.outputs.created }} --label ${{ steps.leb.outputs.version }} --label ${{ steps.leb.outputs.revision }} \
-          -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-arm64v8" \
-          -t "${{ steps.prep.outputs.image }}:arm64v8-latest" \
-          --platform linux/arm64/v8 -f ./Dockerfile .
-      -
-        name: Create manifests
-        env:
-          DOCKER_CLI_EXPERIMENTAL: enabled
-        run: |
-          echo "*** Push GitTag Image ***"
-          docker manifest create ${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }} ${AMD64} ${ARMV7} ${ARM64}
-          docker manifest push ${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}
+          -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}" \
+          --platform linux/amd64,linux/arm/v7,linux/arm64 -f ./Dockerfile --push .
