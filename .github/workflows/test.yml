@@ -2,8 +2,6 @@ name: testbuild-ci
 
 on:
   push:
-    branches:
-      - 'test'
     tags:
       - 'test*'
     paths-ignore:
@@ -30,6 +28,9 @@ jobs:
           echo ::set-output name=revision::org.opencontainers.image.revision=${GITHUB_SHA}
           echo ::set-output name=created::org.opencontainers.image.created=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
       -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      -
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
       -
@@ -39,11 +40,9 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
       -
-        name: Build
-        uses: docker/bake-action@v2
-        with:
-          files: |
-            ./docker-bake.hcl
-            ${{ steps.meta.outputs.bake-file }}
-          targets: image-all
-          push: true
+        name: Build Image & Push
+        run: |
+          docker buildx build --no-cache --pull \
+          --label ${{ steps.leb.outputs.created }} --label ${{ steps.leb.outputs.version }} --label ${{ steps.leb.outputs.revision }} \
+          -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}" \
+          --platform linux/amd64,linux/arm/v7,linux/arm64/v8 -f ./Dockerfile --push .
