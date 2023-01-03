@@ -2,8 +2,12 @@ name: testbuild-ci
 
 on:
   push:
+    branches:
+      - 'test'
     tags:
       - 'test*'
+    paths-ignore:
+      - '**.md'
 
 jobs:
   docker:
@@ -38,9 +42,25 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
       -
-        name: Build Image & Push arm64v8
+        name: Build
+        uses: docker/bake-action@v2
+        with:
+          files: |
+            ./docker-bake.hcl
+            ${{ steps.meta.outputs.bake-file }}
+          targets: image-all
+          push: ${{ github.event_name != 'pull_request' }}
+          set: |
+            *.cache-from=type=gha
+            *.cache-to=type=gha,mode=max
+      -
+        name: Check manifest
+        if: github.event_name != 'pull_request'
         run: |
-          docker buildx build --no-cache --pull \
-          --label ${{ steps.leb.outputs.created }} --label ${{ steps.leb.outputs.version }} --label ${{ steps.leb.outputs.revision }} \
-          -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}" \
-          --platform linux/arm64/v8 -f ./Dockerfile --push .
+          docker buildx imagetools inspect ${{ env.DOCKERHUB_SLUG }}:${{ steps.meta.outputs.version }}
+      -
+        name: Inspect image
+        if: github.event_name != 'pull_request'
+        run: |
+          docker pull ${{ env.DOCKERHUB_SLUG }}:${{ steps.meta.outputs.version }}
+          docker image inspect ${{ env.DOCKERHUB_SLUG }}:${{ steps.meta.outputs.version }}
