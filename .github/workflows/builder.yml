@@ -1,4 +1,4 @@
-name: testbuild-ci
+name: builder-ci
 
 on:
   push:
