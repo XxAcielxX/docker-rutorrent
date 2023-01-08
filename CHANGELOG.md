@@ -1,5 +1,23 @@
 # Changelog
 
+## v3.10-a10
+Notice:
+* Users updating from version `v3.10-a09` and below please read ([#5](https://github.com/XxAcielxX/docker-rutorrent/issues/5))
+
+Changes:
+* Streamlined bootstrapping of `.rtorrent.rc` from base image, rather than providing a custom version.
+
+Base Image:
+* Fix PHP version in .rtlocal.rc ([204](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/204))
+* Make rtorrent and libtorrent with -O2 -flto ([202](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/202))
+* Install nginx and webdav module from Alpine repo ([200](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/200))
+* Fix xmlrpc-c build configuration ([198](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/198))
+* Set S6_KILL_GRACETIME to 10 seconds ([171](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/171))
+* Alpine Linux 3.17 ([195](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/195))
+* PHP 8.1 ([195](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/195))
+* GeoIP2 PHP extension 1.3.1 ([195](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/195))
+* Nginx 1.22.1 ([195](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/195))
+
 ## v3.10-a09
 Base Image:
 * Fix unrar not available since alpine 3.15 ([161](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/161))
@@ -17,7 +35,7 @@ Base Image:
 
 ## v3.10-a06
 Fixed:
-* [#2](https://github.com/XxAcielxX/docker-rutorrent/issues/2) - When removing only torrent, data was also being deleted.
+* ([#2](https://github.com/XxAcielxX/docker-rutorrent/issues/2)) - When removing only torrent, data was also being deleted.
 
 ## v3.10-a05
 Base Image:
