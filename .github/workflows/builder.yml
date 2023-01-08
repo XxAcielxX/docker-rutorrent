@@ -18,8 +18,7 @@ jobs:
       -
         name: Preparation Stage
         id: prep
-        run: |
-          echo ::set-output name=gittag::${GITHUB_REF#refs/*/}
+        run: echo ::set-output name=gittag::${GITHUB_REF#refs/*/}
       -
         name: Labels Stage
         id: leb
