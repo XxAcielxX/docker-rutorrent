@@ -7,7 +7,6 @@ on:
 
 env:
   DOCKERHUB_SLUG: xxacielxx/rutorrent
-  GHCR_SLUG: ghcr.io/${{ github.repository }}
 
 jobs:
   docker:
@@ -38,7 +37,6 @@ jobs:
         with:
           images: |
             ${{ env.DOCKERHUB_SLUG }}
-            ${{ env.GHCR_SLUG }}
           labels: |
             org.opencontainers.image.vendor=XxAcielxX
             org.opencontainers.image.title=ruTorrent
@@ -66,21 +64,18 @@ jobs:
         run: |
           docker buildx build \
           -t "${{ env.DOCKERHUB_SLUG }}:amd64-latest" \
-          -t "${{ env.GHCR_SLUG }}:amd64-latest" \
           --platform linux/amd64 -f ./Dockerfile --push .
       -
         name: Build Image & Push arm32v7
         run: |
           docker buildx build \
           -t "${{ env.DOCKERHUB_SLUG }}:arm32v7-latest" \
-          -t "${{ env.GHCR_SLUG }}:arm32v7-latest" \
           --platform linux/arm/v7 -f ./Dockerfile --push .
       -
         name: Build Image & Push arm64v8
         run: |
           docker buildx build \
           -t "${{ env.DOCKERHUB_SLUG }}:arm64v8-latest" \
-          -t "${{ env.GHCR_SLUG }}:arm64v8-latest" \
           --platform linux/arm64/v8 -f ./Dockerfile --push .
       -
         name: Create manifests
@@ -90,11 +85,6 @@ jobs:
           [[ -f Dockerfile ]] && AMD64=${{ env.DOCKERHUB_SLUG }}:amd64-latest
           [[ -f Dockerfile ]] && ARMV7=${{ env.DOCKERHUB_SLUG }}:arm32v7-latest
           [[ -f Dockerfile ]] && ARM64=${{ env.DOCKERHUB_SLUG }}:arm64v8-latest
-          [[ -f Dockerfile ]] && GHCR_AMD64=${{ env.GHCR_SLUG }}:amd64-latest
-          [[ -f Dockerfile ]] && GHCR_ARMV7=${{ env.GHCR_SLUG }}:arm32v7-latest
-          [[ -f Dockerfile ]] && GHCR_ARM64=${{ env.GHCR_SLUG }}:arm64v8-latest
           echo "*** Push Latest Tag Image ***"
           docker manifest create ${{ env.DOCKERHUB_SLUG }}:latest ${AMD64} ${ARMV7} ${ARM64}
           docker manifest push ${{ env.DOCKERHUB_SLUG }}:latest
-          docker manifest create ${{ env.GHCR_SLUG }}:latest ${GHCR_AMD64} ${GHCR_ARMV7} ${GHCR_ARM64}
-          docker manifest push ${{ env.GHCR_SLUG }}:latest
