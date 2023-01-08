@@ -39,9 +39,10 @@ jobs:
             ${{ env.DOCKERHUB_SLUG }}
             ${{ env.GHCR_SLUG }}
           labels: |
-            maintainer=XxAcielxX
+            org.opencontainers.image.vendor=XxAcielxX
             org.opencontainers.image.title=ruTorrent
             org.opencontainers.image.description=rTorrent & ruTorrent Docker based container
+            org.opencontainers.image.url=https://hub.docker.com/r/xxacielxx/rutorrent
             org.opencontainers.image.source=https://github.com/XxAcielxX/docker-rutorrent
       -
         name: Set up Docker Buildx
