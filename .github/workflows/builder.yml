@@ -5,77 +5,104 @@ on:
     tags:
       - 'v*'
 
+env:
+  DOCKERHUB_SLUG: xxacielxx/rutorrent
+  GHCR_SLUG: ghcr.io/${{ github.repository }}
+
 jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
       -
         name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       -
         name: Preparation Stage
         id: prep
         run: |
-          echo ::set-output name=image::${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}
           echo ::set-output name=gittag::${GITHUB_REF#refs/*/}
       -
         name: Labels Stage
         id: leb
         run: |
-          echo ::set-output name=vendor::org.opencontainers.image.vendor=XxAcielxX
-          echo ::set-output name=title::org.opencontainers.image.title=ruTorrent
           echo ::set-output name=version::org.opencontainers.image.version=${{ steps.prep.outputs.gittag }}
           echo ::set-output name=revision::org.opencontainers.image.revision=${GITHUB_SHA}
           echo ::set-output name=created::org.opencontainers.image.created=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
-          echo ::set-output name=desc::org.opencontainers.image.description=rTorrent + ruTorrent Docker based container
-          echo ::set-output name=lic::org.opencontainers.image.licenses=MIT
-      -
         name: Set up QEMU
-        uses: docker/setup-qemu-action@v1
+        uses: docker/setup-qemu-action@v2
+      -
+        name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: |
+            ${{ env.DOCKERHUB_SLUG }}
+            ${{ env.GHCR_SLUG }}
+          labels: |
+            org.opencontainers.image.vendor=XxAcielxX
+            org.opencontainers.image.title=ruTorrent
+            org.opencontainers.image.description=rTorrent & ruTorrent Docker based container
+            org.opencontainers.image.url=https://hub.docker.com/r/xxacielxx/rutorrent
+            org.opencontainers.image.source=https://github.com/XxAcielxX/docker-rutorrent
       -
         name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
+        uses: docker/setup-buildx-action@v2
+      -
+        name: Login to GHCR
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GH_TOKEN }}
       -
         name: Login to DockerHub
-        uses: docker/login-action@v1 
+        uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+      -
+        name: Build Image & Push amd64
+        run: |
+          docker buildx build \
+          --label ${{ steps.leb.outputs.create }} \
+          --label ${{ steps.leb.outputs.version }} \
+          --label ${{ steps.leb.outputs.revision }} \
+          -t "${{ env.DOCKERHUB_SLUG }}:amd64-latest" \
+          -t "${{ env.GHCR_SLUG }}:amd64-latest" \
+          --platform linux/amd64 -f ./Dockerfile --push .
       -
         name: Build Image & Push arm32v7
         run: |
           docker buildx build \
-          --label ${{ steps.leb.outputs.created }} --label ${{ steps.leb.outputs.version }} --label ${{ steps.leb.outputs.revision }} \
-          -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-arm32v7" \
-          -t "${{ steps.prep.outputs.image }}:arm32v7-latest" \
+          --label ${{ steps.leb.outputs.create }} \
+          --label ${{ steps.leb.outputs.version }} \
+          --label ${{ steps.leb.outputs.revision }} \
+          -t "${{ env.DOCKERHUB_SLUG }}:arm32v7-latest" \
+          -t "${{ env.GHCR_SLUG }}:arm32v7-latest" \
           --platform linux/arm/v7 -f ./Dockerfile --push .
       -
         name: Build Image & Push arm64v8
         run: |
           docker buildx build \
-          --label ${{ steps.leb.outputs.created }} --label ${{ steps.leb.outputs.version }} --label ${{ steps.leb.outputs.revision }} \
-          -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-arm64v8" \
-          -t "${{ steps.prep.outputs.image }}:arm64v8-latest" \
+          --label ${{ steps.leb.outputs.create }} \
+          --label ${{ steps.leb.outputs.version }} \
+          --label ${{ steps.leb.outputs.revision }} \
+          -t "${{ env.DOCKERHUB_SLUG }}:arm64v8-latest" \
+          -t "${{ env.GHCR_SLUG }}:arm64v8-latest" \
           --platform linux/arm64/v8 -f ./Dockerfile --push .
-      -
-        name: Build Image & Push amd64
-        run: |
-          docker buildx build \
-          --label ${{ steps.leb.outputs.created }} --label ${{ steps.leb.outputs.version }} --label ${{ steps.leb.outputs.revision }} \
-          -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-amd64" \
-          -t "${{ steps.prep.outputs.image }}:amd64-latest" \
-          --platform linux/amd64 -f ./Dockerfile --push .
       -
         name: Create manifests
         env:
           DOCKER_CLI_EXPERIMENTAL: enabled
         run: |
-          [[ -f Dockerfile ]] && AMD64=${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-amd64
-          [[ -f Dockerfile ]] && ARM64=${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-arm64v8
-          [[ -f Dockerfile ]] && ARMV7=${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}-arm32v7
-          echo "*** Push GitTag Image ***"
-          docker manifest create ${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }} ${AMD64} ${ARM64} ${ARMV7}
-          docker manifest push ${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}
+          [[ -f Dockerfile ]] && AMD64=${{ env.DOCKERHUB_SLUG }}:amd64-latest
+          [[ -f Dockerfile ]] && ARMV7=${{ env.DOCKERHUB_SLUG }}:arm32v7-latest
+          [[ -f Dockerfile ]] && ARM64=${{ env.DOCKERHUB_SLUG }}:arm64v8-latest
+          [[ -f Dockerfile ]] && GHCR_AMD64=${{ env.GHCR_SLUG }}:amd64-latest
+          [[ -f Dockerfile ]] && GHCR_ARMV7=${{ env.GHCR_SLUG }}:arm32v7-latest
+          [[ -f Dockerfile ]] && GHCR_ARM64=${{ env.GHCR_SLUG }}:arm64v8-latest
           echo "*** Push Latest Tag Image ***"
-          docker manifest create ${{ steps.prep.outputs.image }}:latest ${AMD64} ${ARM64} ${ARMV7}
-          docker manifest push ${{ steps.prep.outputs.image }}:latest
+          docker manifest create ${{ env.DOCKERHUB_SLUG }}:latest ${AMD64} ${ARMV7} ${ARM64}
+          docker manifest push ${{ env.DOCKERHUB_SLUG }}:latest
+          docker manifest create ${{ env.GHCR_SLUG }}:latest ${GHCR_AMD64} ${GHCR_ARMV7} ${GHCR_ARM64}
+          docker manifest push ${{ env.GHCR_SLUG }}:latest
