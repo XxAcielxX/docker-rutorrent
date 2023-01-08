@@ -65,9 +65,6 @@ jobs:
         name: Build Image & Push amd64
         run: |
           docker buildx build \
-          --label ${{ steps.leb.outputs.create }} \
-          --label ${{ steps.leb.outputs.version }} \
-          --label ${{ steps.leb.outputs.revision }} \
           -t "${{ env.DOCKERHUB_SLUG }}:amd64-latest" \
           -t "${{ env.GHCR_SLUG }}:amd64-latest" \
           --platform linux/amd64 -f ./Dockerfile --push .
@@ -75,9 +72,6 @@ jobs:
         name: Build Image & Push arm32v7
         run: |
           docker buildx build \
-          --label ${{ steps.leb.outputs.create }} \
-          --label ${{ steps.leb.outputs.version }} \
-          --label ${{ steps.leb.outputs.revision }} \
           -t "${{ env.DOCKERHUB_SLUG }}:arm32v7-latest" \
           -t "${{ env.GHCR_SLUG }}:arm32v7-latest" \
           --platform linux/arm/v7 -f ./Dockerfile --push .
@@ -85,9 +79,6 @@ jobs:
         name: Build Image & Push arm64v8
         run: |
           docker buildx build \
-          --label ${{ steps.leb.outputs.create }} \
-          --label ${{ steps.leb.outputs.version }} \
-          --label ${{ steps.leb.outputs.revision }} \
           -t "${{ env.DOCKERHUB_SLUG }}:arm64v8-latest" \
           -t "${{ env.GHCR_SLUG }}:arm64v8-latest" \
           --platform linux/arm64/v8 -f ./Dockerfile --push .
