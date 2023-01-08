@@ -16,16 +16,13 @@ jobs:
         name: Checkout
         uses: actions/checkout@v3
       -
-        name: Preparation Stage
-        id: prep
-        run: echo ::set-output name=gittag::${GITHUB_REF#refs/*/}
-      -
-        name: Labels Stage
+        name: Generate Image Labels
         id: leb
         run: |
-          echo ::set-output name=version::org.opencontainers.image.version=${{ steps.prep.outputs.gittag }}
-          echo ::set-output name=revision::org.opencontainers.image.revision=${GITHUB_SHA}
-          echo ::set-output name=created::org.opencontainers.image.created=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          echo "gittag=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
+          echo "version=org.opencontainers.image.version=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
+          echo "revision=org.opencontainers.image.revision=${GITHUB_SHA}" >> $GITHUB_OUTPUT
+          echo "created=org.opencontainers.image.created=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> $GITHUB_OUTPUT
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -45,5 +42,5 @@ jobs:
           --label ${{ steps.leb.outputs.version }} \
           --label ${{ steps.leb.outputs.revision }} \
           --label ${{ steps.leb.outputs.created }} \
-          -t "${{ env.DOCKERHUB_SLUG }}:${{ steps.prep.outputs.gittag }}" \
+          -t "${{ env.DOCKERHUB_SLUG }}:${{ steps.leb.outputs.gittag }}" \
           --platform linux/amd64,linux/arm/v7,linux/arm64 -f ./Dockerfile --push .
