@@ -5,6 +5,9 @@ on:
     tags:
       - 'test*'
 
+env:
+  DOCKERHUB_SLUG: xxacielxx/rutorrent
+
 jobs:
   docker:
     runs-on: ubuntu-latest
@@ -15,9 +18,7 @@ jobs:
       -
         name: Preparation Stage
         id: prep
-        run: |
-          echo ::set-output name=image::${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}
-          echo ::set-output name=gittag::${GITHUB_REF#refs/*/}
+        run: echo ::set-output name=gittag::${GITHUB_REF#refs/*/}
       -
         name: Labels Stage
         id: leb
@@ -41,6 +42,8 @@ jobs:
         name: Build Image & Push
         run: |
           docker buildx build \
-          --label ${{ steps.leb.outputs.created }} --label ${{ steps.leb.outputs.version }} --label ${{ steps.leb.outputs.revision }} \
-          -t "${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.gittag }}" \
+          --label ${{ steps.leb.outputs.version }} \
+          --label ${{ steps.leb.outputs.revision }} \
+          --label ${{ steps.leb.outputs.created }} \
+          -t "${{ env.DOCKERHUB_SLUG }}:${{ steps.prep.outputs.gittag }}" \
           --platform linux/amd64,linux/arm/v7,linux/arm64 -f ./Dockerfile --push .
