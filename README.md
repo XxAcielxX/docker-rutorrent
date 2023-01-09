@@ -2,19 +2,20 @@
  
 [![GitHub Repo stars](https://img.shields.io/github/stars/XxAcielxX/rutorrent?color=E66000&labelColor=353535&logo=Github&style=for-the-badge)](https://github.com/XxAcielxX/docker-rutorrent)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/XxAcielxX/rutorrent?color=E66000&labelColor=353535&color0=FF0000&logo=github&style=for-the-badge)](https://github.com/XxAcielxX/docker-rutorrent/releases)
-[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/XxAcielxX/docker-rutorrent/builder.yml?labelColor=353535&logo=Github&style=for-the-badge)](https://github.com/XxAcielxX/docker-rutorrent)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/XxAcielxX/docker-rutorrent/builder.yml?labelColor=353535&logo=Github&style=for-the-badge)](https://github.com/XxAcielxX/docker-rutorrent/actions/workflows/builder.yml)
 [![Docker Pulls](https://img.shields.io/docker/pulls/xxacielxx/rutorrent?color=E66000&labelColor=353535&label=Pulls&logo=docker&logoColor=FFFFFF&style=for-the-badge)](https://hub.docker.com/r/xxacielxx/rutorrent)
 [![Docker Image Size (tag)](https://img.shields.io/docker/image-size/xxacielxx/rutorrent/latest?color=E66000&labelColor=353534&logo=Docker&logoColor=FFFFFF&style=for-the-badge)](https://hub.docker.com/r/xxacielxx/rutorrent/tags)
 [<img src="https://img.shields.io/badge/BTC-3Hqd4mameE1GzDNrfj2V9KAWaL7sUxJtA8-E66000?labelColor=353535&style=for-the-badge&logo=btc"/>](https://en.cryptobadges.io/donate/3Hqd4mameE1GzDNrfj2V9KAWaL7sUxJtA8)
 
 <img src="https://github.com/XxAcielxX/rutorrent/raw/main/root/rutorrent.jpg?raw=true" width="60%" height="60%"/>
 
-[rtorrent](https://github.com/rakshasa/rtorrent) is a popular bittorrent client & [rutorrent](https://github.com/Novik/ruTorrent) Web-UI based front-end.
+[rtorrent](https://github.com/rakshasa/rtorrent) is a popular bittorrent client & [rutorrent](https://github.com/Novik/ruTorrent) Web-UI based front-end for it.
 
 ## This is a clone of the [crazy-max/docker-rtorrent-rutorrent](https://github.com/crazy-max/docker-rtorrent-rutorrent) container with the following modifications:
 - Stop creation of `/downloads{/completed,/temp}` directories
 - Disabled Healthchecks
 - Changed Default Downloads directory to `/downloads`
+- Set TopDirectory in rutorrent `config.php` to `/downloads`, to prevent access to root directory inside the container
 - Disabled move of completed torrents
 - Tuned off `PEX` & `system.umask.set` (in `.rtorrent.rc`)
 
