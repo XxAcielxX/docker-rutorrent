@@ -7,30 +7,32 @@
 [![Docker Image Size (tag)](https://img.shields.io/docker/image-size/xxacielxx/rutorrent/latest?color=E66000&labelColor=353534&logo=Docker&logoColor=FFFFFF&style=for-the-badge)](https://hub.docker.com/r/xxacielxx/rutorrent/tags)
 [<img src="https://img.shields.io/badge/BTC-3Hqd4mameE1GzDNrfj2V9KAWaL7sUxJtA8-E66000?labelColor=353535&style=for-the-badge&logo=btc"/>](https://en.cryptobadges.io/donate/3Hqd4mameE1GzDNrfj2V9KAWaL7sUxJtA8)
 
-<img src="https://github.com/XxAcielxX/rutorrent/raw/main/root/rutorrent.jpg?raw=true" width="60%" height="60%"/>
+<img src="https://raw.githubusercontent.com/XxAcielxX/docker-rutorrent/main/root/rutorrent.jpg" width="40%" height="40%"/>
 
 [rtorrent](https://github.com/rakshasa/rtorrent) is a popular bittorrent client & [rutorrent](https://github.com/Novik/ruTorrent) Web-UI based front-end for it.
 
 ## This is a clone of the [crazy-max/docker-rtorrent-rutorrent](https://github.com/crazy-max/docker-rtorrent-rutorrent) container with the following modifications:
-- Stop creation of `/downloads{/completed,/temp}` directories
-- Disabled Healthchecks
-- Changed Default Downloads directory to `/downloads`
-- Set TopDirectory in rutorrent `config.php` to `/downloads`, to prevent access to root directory inside the container
-- Disabled move of completed torrents
-- Tuned off `PEX` & `system.umask.set` (in `.rtorrent.rc`)
+
+* Stop creation of `/downloads{/completed,/temp}` directories
+* Disabled Healthchecks
+* Changed Default Downloads directory to `/downloads`
+* Disabled move of completed torrents
+* Tuned off `PEX` & `system.umask.set` (in `.rtorrent.rc`) during bootstrapping
+* Set TopDirectory in rutorrent `config.php` to `/downloads`, to prevent access to root directory inside the container
 
 ## Supported Architectures
-These images support multiple architectures such as `x86-64`, `arm64` and `armhf` using Docker manifest.
 
-When you pull `xxacielxx/rutorrent`, will get the arch for your system.
+These images support multiple architectures such as `x86-64`, `armhf` and `arm64` using Docker manifest.
+
+When you pull `xxacielxx/rutorrent` or `ghcr.io/xxacielxx/rutorrent`, you will get the arch for your system.
 
 The supported architectures are:
 
 | Architecture | Tag |
 | :----: | --- |
 | x86-64 | amd64-latest |
-| arm64 | arm64v8-latest |
 | armhf | arm32v7-latest |
+| arm64 | arm64v8-latest |
 
 ## Usage
 
@@ -65,6 +67,7 @@ services:
 ```
 
 ### docker cli
+
 ```shell
 mkdir data downloads passwd
 chown 1000:1000 data downloads passwd
@@ -89,6 +92,7 @@ docker run -d \
 ```
 
 ## Volumes
+
 * `/data`: rTorrent / ruTorrent config, session files, log, ...
 * `/passwd`: Contains htpasswd files for basic auth (web-ui, rpc & webdav)
 * `/downloads`: Downloads directory
@@ -97,14 +101,17 @@ docker run -d \
 > give the volumes correct permissions, the container may not start or function properly.
 
 ## Ports
+
 * `6881` (or `RT_DHT_PORT`): DHT UDP port (`dht.port.set`)
 * `8000` (or `XMLRPC_PORT`): XMLRPC port through nginx over SCGI socket
 * `8080` (or `RUTORRENT_PORT`): ruTorrent HTTP port
 * `9000` (or `WEBDAV_PORT`): WebDAV port on `/downloads`
 * `50000` (or `RT_INC_PORT`): Incoming connections (`network.port_range.set`)
+
 ## Updating
 
 ### Via Docker Compose
+
 * Update all images: `docker-compose pull`
   * or update a single image: `docker-compose pull rutorrent`
 * Let compose update all containers as necessary: `docker-compose up -d`
@@ -112,10 +119,11 @@ docker run -d \
 * You can also remove the old dangling images: `docker image prune`
 
 ### Via Docker CLI
+
 * Update image: `docker pull xxacielxx/rutorrent`
 * Stop the running container: `docker stop rutorrent`
 * Delete the container: `docker rm rutorrent`
 * Recreate a new container with the same docker run parameters as instructed above (if mapped correctly to host folders, your `/data, /passwd, /downloads` folders and settings will be preserved)
   * You can also remove the old dangling images: `docker image prune`
 
-#### For full configurations and details, kindly visit [crazy-max/docker-rtorrent-rutorrent](https://github.com/crazy-max/docker-rtorrent-rutorrent).
+### For full configurations and details, kindly visit [crazy-max/docker-rtorrent-rutorrent](https://github.com/crazy-max/docker-rtorrent-rutorrent).
