@@ -1,5 +1,14 @@
 # Changelog
 
+## v4.0-a01
+Changes:
+* [[d3e2789](https://github.com/XxAcielxX/docker-rutorrent/commit/d3e27891bec7d47c62ceded1b0599cd8034f9154)] Added GHCR Image support. You can now pull image from `ghcr.io` also.
+
+Base Image:
+* ruTorrent v4.0-stable ([208](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/208))
+* Update GeoIP2 ruTorrent plugin ([211](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/211))
+* Fix nginx logs folder perms ([207](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/207)) 
+
 ## v3.10-a10
 Notice:
 * Users updating from version `v3.10-a09` and below please read ([#5](https://github.com/XxAcielxX/docker-rutorrent/issues/5))
