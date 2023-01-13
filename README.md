@@ -7,7 +7,7 @@
 [![Docker Image Size (tag)](https://img.shields.io/docker/image-size/xxacielxx/rutorrent/latest?color=E66000&labelColor=353534&logo=Docker&logoColor=FFFFFF&style=for-the-badge)](https://hub.docker.com/r/xxacielxx/rutorrent/tags)
 [<img src="https://img.shields.io/badge/BTC-3Hqd4mameE1GzDNrfj2V9KAWaL7sUxJtA8-E66000?labelColor=353535&style=for-the-badge&logo=btc"/>](https://en.cryptobadges.io/donate/3Hqd4mameE1GzDNrfj2V9KAWaL7sUxJtA8)
 
-<img src="https://raw.githubusercontent.com/XxAcielxX/docker-rutorrent/main/root/rutorrent.jpg" width="40%" height="40%"/>
+<img src="https://raw.githubusercontent.com/XxAcielxX/docker-rutorrent/main/docs/rutorrent.jpg" width="40%" height="40%"/>
 
 [rtorrent](https://github.com/rakshasa/rtorrent) is a popular bittorrent client & [rutorrent](https://github.com/Novik/ruTorrent) Web-UI based front-end for it.
 
