@@ -73,10 +73,10 @@ body:
     attributes:
       description: |
         Provide a full docker log, output of "docker logs rutorrent"
+        Post logs link if they are very long, please use [Pastebin](https://pastebin.com), [dPaste](https://dpaste.com), [0bin](https://0bin.net) or any other.
       label: Container logs
       placeholder: |
-        Output of `docker logs rutorrent`
-        Post logs link if they are very long, please use [Pastebin](https://pastebin.com), [dPaste](https://dpaste.com), [0bin](https://0bin.net) or other.
+        Output of `docker logs rutorrent` or link
       render: bash
     validations:
       required: true
