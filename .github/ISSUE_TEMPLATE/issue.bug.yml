@@ -50,7 +50,7 @@ body:
         - How docker service was installed:
       render: markdown
     validations:
-      required: false
+      required: true
   - type: dropdown
     attributes:
       label: CPU architecture
