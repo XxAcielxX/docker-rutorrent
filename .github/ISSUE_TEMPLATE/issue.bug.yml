@@ -39,10 +39,12 @@ body:
       label: Environment
       description: |
         examples:
+          - **Image version**: v4.0-a01
           - **OS**: Ubuntu 22.04
           - **Docker version**: 20.10.20
           - **How docker service was installed**: distro's packagemanager
       value: |
+        - Image version:
         - OS:
         - Docker version:
         - How docker service was installed:
@@ -54,7 +56,7 @@ body:
       label: CPU architecture
       options:
         - x86-64
-        - armhf
+        - armv7
         - arm64
     validations:
       required: true
@@ -74,6 +76,7 @@ body:
       label: Container logs
       placeholder: |
         Output of `docker logs rutorrent`
+        Post logs link if they are very long, please use [Pastebin](https://pastebin.com), [dPaste](https://dpaste.com), [0bin](https://0bin.net) or other.
       render: bash
     validations:
       required: true
