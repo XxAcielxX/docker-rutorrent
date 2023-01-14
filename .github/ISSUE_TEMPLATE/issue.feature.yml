@@ -1,7 +1,7 @@
 # Based on the issue template
 name: Feature request
 description: Suggest an idea for this project
-title: "[FEAT] <title>"
+title: "[FEAT] <Title>"
 labels: [Enhancement]
 body:
   - type: checkboxes
