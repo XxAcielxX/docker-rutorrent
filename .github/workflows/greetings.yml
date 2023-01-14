@@ -1,0 +1,12 @@
+name: Greetings
+
+on: issues
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/first-interaction@v1
+      with:
+        issue-message: 'Thanks for opening your first issue here! Be sure to follow the [bug](https://github.com/XxAcielxX/docker-rutorrent/blob/main/.github/ISSUE_TEMPLATE/issue.bug.yml) or [feature](https://github.com/XxAcielxX/docker-rutorrent/blob/mainr/.github/ISSUE_TEMPLATE/issue.feature.yml) issue templates!'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
