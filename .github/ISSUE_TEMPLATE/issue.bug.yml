@@ -36,11 +36,11 @@ body:
       required: true
   - type: textarea
     attributes:
-      label: Image
+      label: Image & Browser details
       description: |
         examples:
           - **Image**: v4.0-a01
-          - **Browser**: Mozilla Firefox v108.0.2
+          - **Browser**: Mozilla Firefox v108.0.2 (Desktop)
           - **Tried different browser?**: Yes, tested with Google Chrome v109.0.5414.74 (Desktop) and Microsoft Edge 108.0.1462.76 (Android).
       value: |
         - Image:
