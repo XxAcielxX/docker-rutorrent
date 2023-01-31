@@ -44,6 +44,7 @@ jobs:
       - name: Build Image & Push amd64
         run: |
           docker buildx build \
+          --provenance=false \
           --label ${{ env.version }} \
           --label ${{ env.revision }} \
           --label ${{ env.created }} \
@@ -54,6 +55,7 @@ jobs:
       - name: Build Image & Push arm32v7
         run: |
           docker buildx build \
+          --provenance=false \
           --label ${{ env.version }} \
           --label ${{ env.revision }} \
           --label ${{ env.created }} \
@@ -64,6 +66,7 @@ jobs:
       - name: Build Image & Push arm64v8
         run: |
           docker buildx build \
+          --provenance=false \
           --label ${{ env.version }} \
           --label ${{ env.revision }} \
           --label ${{ env.created }} \
