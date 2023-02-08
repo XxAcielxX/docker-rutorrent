@@ -1,5 +1,10 @@
 # Changelog
 
+
+## v4.0.1-a03
+### Fixes:
+* Fixed `03-config.sh` init failed error (#8)
+
 ## v4.0.1-a02
 ### Base Image:
 * Set `$localHostedMode` = true ([215](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/215)) 
