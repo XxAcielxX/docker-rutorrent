@@ -82,7 +82,7 @@ body:
       required: true
   - type: textarea
     attributes:
-      label: Docker creation
+      label: Container creation
       description: |
         Command used to create docker container
         Provide your docker create/run command or compose yaml snippet, or a screenshot of settings if using a gui to create the container
