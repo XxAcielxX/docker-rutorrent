@@ -1,6 +1,10 @@
 # Changelog
 
 
+## v4.0.2-a01
+### Base Image:
+* 4.0.2-hotfix in https://github.com/XxAcielxX/docker-rutorrent/pull/10 
+
 ## v4.0.1-a03
 ### Fixes:
 * Fixed `03-config.sh` init failed error (#8)
