@@ -5,7 +5,7 @@
 [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/XxAcielxX/docker-rutorrent/builder.yml?labelColor=353535&logo=Github&style=for-the-badge)](https://github.com/XxAcielxX/docker-rutorrent/actions/workflows/builder.yml)
 [![Docker Pulls](https://img.shields.io/docker/pulls/xxacielxx/rutorrent?color=E66000&labelColor=353535&label=Pulls&logo=docker&logoColor=FFFFFF&style=for-the-badge)](https://hub.docker.com/r/xxacielxx/rutorrent)
 [![Docker Image Size (tag)](https://img.shields.io/docker/image-size/xxacielxx/rutorrent/latest?color=E66000&labelColor=353534&logo=Docker&logoColor=FFFFFF&style=for-the-badge)](https://hub.docker.com/r/xxacielxx/rutorrent/tags)
-[<img src="https://img.shields.io/badge/BTC-3Hqd4mameE1GzDNrfj2V9KAWaL7sUxJtA8-E66000?labelColor=353535&style=for-the-badge&logo=btc"/>](https://en.cryptobadges.io/donate/3Hqd4mameE1GzDNrfj2V9KAWaL7sUxJtA8)
+<img src="https://img.shields.io/badge/BTC-3Hqd4mameE1GzDNrfj2V9KAWaL7sUxJtA8-E66000?labelColor=353535&style=for-the-badge&logo=btc"/>
 
 <img src="https://raw.githubusercontent.com/XxAcielxX/docker-rutorrent/main/docs/rutorrent.jpg" width="40%" height="40%"/>
 
@@ -18,7 +18,7 @@
 * Changed Default Downloads directory to `/downloads`
 * Disabled move of completed torrents
 * Tuned off `PEX` & `system.umask.set` (in `.rtorrent.rc`) during bootstrapping
-* Set TopDirectory in rutorrent `config.php` to `/downloads`, to prevent access to root directory inside the container
+* Set `TopDirectory` in rutorrent `config.php` to `/downloads`, to prevent access to root directory inside the container
 
 ## Supported Architectures
 
