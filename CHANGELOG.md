@@ -1,5 +1,13 @@
 # Changelog
 
+## v4.0.4-a01
+### Changes:
+* Update to ruTorrent v4.0.4
+ 
+### Base Image:
+* Fix RU_REMOVE_CORE_PLUGINS defaults ([230](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/230))
+* Remove erase data workaround ([229](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/229))
+* Improve watch directory support ([219](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/219))
 
 ## v4.0.2-a01
 ### Base Image:
