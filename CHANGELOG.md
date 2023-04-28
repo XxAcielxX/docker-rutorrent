@@ -1,5 +1,19 @@
 # Changelog
 
+## v4.1.3-a01
+### Changes:
+* Update to ruTorrent v4.1.3 ([235](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/235))
+
+### Fixes/Improvements:
+* v4.1: Improves support for RSS feeds, adds multi-label select feature and icon upload feature. Optimizes speed, traffic and CPU graph rendering. Fixes a few minor bugs with the web interface.
+https://github.com/Novik/ruTorrent/releases/tag/v4.1
+* v4.1.1: Fixes an issue with removing packages from system after installation.
+https://github.com/Novik/ruTorrent/releases/tag/v4.1.1
+* v4.1.2: Critical bugs are resolved, which cause the web interface to fail to load.
+https://github.com/Novik/ruTorrent/releases/tag/v4.1.2
+* v4.1.3: Fixes an issue with the RSS context menu not displaying when the rssurlrewrite plugin is enabled.
+https://github.com/Novik/ruTorrent/releases/tag/v4.1.3 
+
 ## v4.0.4-a01
 ### Changes:
 * Update to ruTorrent v4.0.4
