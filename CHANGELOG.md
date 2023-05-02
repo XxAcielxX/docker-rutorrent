@@ -1,5 +1,14 @@
 # Changelog
 
+## v4.1.5-a01
+### Changes:
+* Update to ruTorrent v4.1.5
+* Fixes a bunch of bugs with RSS Feeds, torrent deletion and caching issues. Removes deprecated options from configuration.
+
+### Base Image:
+* Optimize cURL build ([239](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/239))
+* Add `php81-dom` extension ([237](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/237))
+
 ## v4.1.3-a01
 ### Changes:
 * Update to ruTorrent v4.1.3 ([235](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/235))
