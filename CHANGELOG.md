@@ -1,5 +1,9 @@
 # Changelog
 
+## v4.1.5-a02
+### Base Image:
+* Improve session saving in rTorrent ([242](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/242))
+
 ## v4.1.5-a01
 ### Changes:
 * Update to ruTorrent v4.1.5
