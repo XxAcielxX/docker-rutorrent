@@ -11,7 +11,7 @@ LABEL org.opencontainers.image.source="https://github.com/XxAcielxX/docker-rutor
 # modifications
 RUN \
   echo "**** apply patches for /downloads ****" && \
-  sed -i -e '148s/themes [*\]/themes/; 239s_[*/]_/downloads_; 149,150d;384,385d' '/etc/cont-init.d/03-config.sh' && \
+  sed -i -e '149s/themes [*\]/themes/; 241s_[*/]_/downloads_; 150,151d;386,387d' '/etc/cont-init.d/03-config.sh' && \
   sed -i -e '5,23s/[*/]complete//' '/tpls/etc/nginx/conf.d/webdav.conf' && \
   sed -i -e '/pex\.set/s/yes/no/; /umask\.set/s/^/#/; 56,60d' '/tpls/.rtorrent.rc' && \
   sed -i -e '/complete\//d; /temp\//d; /directory\.default/s/download_temp/download/' '/tpls/etc/rtorrent/.rtlocal.rc'
