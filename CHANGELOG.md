@@ -1,5 +1,12 @@
 # Changelog
 
+## v4.2.6-a01
+### Changes:
+* Update to ruTorrent v4.2.6
+
+### Base Image:
+* Alpine Linux 3.18 ([258](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/258))
+
 ## v4.1.5-a02
 ### Base Image:
 * Improve session saving in rTorrent ([242](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/242))
