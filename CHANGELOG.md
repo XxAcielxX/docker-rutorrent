@@ -1,5 +1,9 @@
 # Changelog
 
+## v4.2.9-a01
+### Changes:
+* Update to ruTorrent v4.2.9
+
 ## v4.2.6-a01
 ### Changes:
 * Update to ruTorrent v4.2.6
