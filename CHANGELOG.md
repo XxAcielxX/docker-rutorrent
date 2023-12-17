@@ -1,5 +1,16 @@
 # Changelog
 
+## v4.2.9-a02
+### Base Image:
+* rTorrent patches
+  * Avoid stack overflow for lockfile buffer
+  * Increase maximum SCGI request to 16MB
+  * Fix saving session files
+  * Fix a common rtorrent xml-rpc crash when trying to queue an invalid task
+  * Resolve xmlrpc logic crash
+* libtorrent patches
+  * Allow 10 gigabit speed throttles
+
 ## v4.2.9-a01
 ### Changes:
 * Update to ruTorrent v4.2.9
