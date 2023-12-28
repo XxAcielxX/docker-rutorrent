@@ -5,6 +5,7 @@
 * rTorrent: tracker scrape feature patch ([288](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/288))
 * Alpine Linux 3.19 and PHP 8.2 ([297](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/297))
 * cURL 8.5.0, c-ares 1.24.0 ([295](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/295))
+* UDNS support ([303](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/303))
 
 ## v4.2.9-a02
 ### Base Image:
