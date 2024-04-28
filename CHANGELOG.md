@@ -1,5 +1,15 @@
 # Changelog
 
+## v4.3.0
+### Changes:
+* Update to `ruTorrent v4.3.0`
+
+### Base Image:
+* rTorrent: Add TCP socket configurations ([322](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/322))
+* Add php82-fileinfo package ([325](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/325))
+* rTorrent: Set of patches to fix memory leaks ([308](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/308))
+* rTorrent: Fix memory access crash ([310](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/310))
+
 ## v4.2.9-a03
 ### Base Image:
 * rTorrent: tracker scrape feature patch ([288](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/288))
