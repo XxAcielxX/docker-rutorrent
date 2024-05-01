@@ -1,6 +1,14 @@
 # Changelog
 
-## v4.3.0
+## v4.3.0-a02
+### Fixes:
+* [#17](https://github.com/XxAcielxX/docker-rutorrent/issues/17) - Error in option file: `/etc/rtorrent/.rtlocal.rc:48`
+
+###  Base Image:
+* Set `useInternalHybrid` ruTorrent setting to `true` ([341](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/341))
+* Fix missing changes in `.rtlocal.rc` ([338](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/338))
+
+## v4.3.0-a01
 ### Changes:
 * Update to `ruTorrent v4.3.0`
 
