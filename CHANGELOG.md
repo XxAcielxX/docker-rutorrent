@@ -6,7 +6,7 @@
 * Update to `rTorrent v3.1`
 
 ### Base Image
-* Switch to rTorrent stickz repo [347](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/347))
+* Switch to rTorrent stickz repo ([347](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/347))
 * Disable listening for IPv6 on nginx ([349](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/349))
 
 ## v4.3.1-a01
