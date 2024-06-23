@@ -1,5 +1,13 @@
 # Changelog
 
+## v4.3.3-a01
+### Changes
+* Update to `ruTorrent v4.3.3`
+* Update to `rTorrent v3.2`
+
+### Base Image
+* rTorrent: schedule torrent session save as background task by @stickz in ([358](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/358))
+
 ## v4.3.2-a01
 ### Changes
 * Update to `ruTorrent v4.3.2`
