@@ -1,5 +1,16 @@
 # Changelog
 
+## v4.3.5-a01
+### Changes
+* Update to `ruTorrent v4.3.5`
+* Update to `rTorrent v4.0`
+
+### Base Image
+* rTorrent: Optimize session saving for new torrents by @stickz in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/368
+* rTorrent: Add disk space pre-allocation environment variable by @stickz in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/367
+* Upgrade to c-ares 1.31 by @stickz in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/369
+* Upgrade mktorrent build script by @stickz in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/366
+
 ## v4.3.3-a01
 ### Changes
 * Update to `ruTorrent v4.3.3`
