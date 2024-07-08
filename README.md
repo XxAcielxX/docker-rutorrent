@@ -43,7 +43,6 @@ Here are some example snippets to help you get started creating a container.
 Compatible with docker-compose v2 schemas.
 
 ```yaml
----
 services:
   rutorrent:
     image: xxacielxx/rutorrent:latest
@@ -68,9 +67,6 @@ services:
 ### docker cli
 
 ```shell
-mkdir data downloads passwd
-chown 1000:1000 data downloads passwd
-
 docker run -d \
   --name rutorrent \
   --ulimit nproc=65535 \
