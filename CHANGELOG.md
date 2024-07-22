@@ -1,5 +1,10 @@
 # Changelog
 
+## v4.3.6-a01
+### Changes
+* Update to `ruTorrent v4.3.6` by @stickz
+* Update to `rTorrent v6.0` by @stickz
+
 ## v4.3.5-a02
 ### Changes
 * Update to `rTorrent v5.1` by @stickz
