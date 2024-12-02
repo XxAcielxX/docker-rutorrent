@@ -1,5 +1,17 @@
 # Changelog
 
+## v5.1.1-a01
+### Changes
+* Update to `ruTorrent v5.1.1` by @stickz
+
+### Base Image
+* Update to `curl v8.11.0` and `c-ares v1.34.3` by @stickz in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/406
+
+## v5.1.0-a01
+### Changes
+* Update to `ruTorrent v5.1.0` by @stickz
+* Update to `rTorrent v6.1` by @stickz
+
 ## v4.3.6-a01
 ### Changes
 * Update to `ruTorrent v4.3.6` by @stickz
