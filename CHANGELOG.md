@@ -1,5 +1,9 @@
 # Changelog
 
+## v5.1.5-a02
+### Changes
+* Update to `rTorrent v7.2` by @stickz
+
 ## v5.1.5-a01
 ### Changes
 * Update to `ruTorrent v5.1.5` by @stickz
