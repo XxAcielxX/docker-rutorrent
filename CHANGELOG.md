@@ -12,7 +12,7 @@
 ### Base Image
 * Alpine Linux 3.21 by @stickz in ([417](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/417))
 * PHP 8.3 by @stickz in ([416](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/416))
-* Update c-ares to 1.34.4 and cURL to v8.11.1 by @stickz in ([415)](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/415))
+* Update c-ares to 1.34.4 and cURL to v8.11.1 by @stickz in ([415](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/415))
 * Properly build cURL with LTO by @stickz in ([411](https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/411))
 
 ## v5.1.1-a01
