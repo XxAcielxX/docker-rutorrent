@@ -1,5 +1,14 @@
 # Changelog
 
+## v5.2.6-a01
+### Changes
+* Update to `ruTorrent v5.2.6` by @stickz
+
+### Base Image
+* Switch back to [rakshasa/rtorrent](https://github.com/rakshasa/rtorrent) and update to v0.15.3 by @stickz in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/439
+* Update c-ares to 1.34.5 and cURL to 8.12.1 by @stickz in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/440
+* Fix missing image labels by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/444
+
 ## v5.1.7-a01
 ### Changes
 * Update to `ruTorrent v5.1.7` by @stickz
