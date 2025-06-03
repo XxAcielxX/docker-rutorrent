@@ -1,5 +1,12 @@
 # Changelog
 
+##v5.2.8-a01
+### Changes
+* Update to `ruTorrent v5.2.8` by @stickz
+
+### Base Image
+* rTorrent patch fixing memory access issues by @stickz in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/451
+
 ## v5.2.6-a01
 ### Changes
 * Update to `ruTorrent v5.2.6` by @stickz
