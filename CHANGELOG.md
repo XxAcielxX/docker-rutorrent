@@ -1,6 +1,6 @@
 # Changelog
 
-##v5.2.8-a01
+## v5.2.8-a01
 ### Changes
 * Update to `ruTorrent v5.2.8` by @stickz
 
