@@ -1,4 +1,4 @@
-FROM crazymax/rtorrent-rutorrent:latest
+FROM crazymax/rtorrent-rutorrent:5.1.7-7.2
 
 # set labels
 LABEL maintainer="XxAcielxX"
