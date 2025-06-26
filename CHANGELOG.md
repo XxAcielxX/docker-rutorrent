@@ -1,5 +1,13 @@
 # Changelog
 
+## v5.2.9-a01
+### Changes
+* Update to `ruTorrent v5.2.9` by @stickz
+* Update to `rTorrent v0.15.4` by @stickz
+
+### Base Image
+* Update to `cURL v8.14.1` by @stickz in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/45 7
+
 ## v5.2.8-a01
 ### Changes
 * Update to `ruTorrent v5.2.8` by @stickz
