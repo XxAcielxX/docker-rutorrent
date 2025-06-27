@@ -1,5 +1,13 @@
 # Changelog
 
+## v5.2.10-a01
+### Changes
+* Update to `ruTorrent v5.2.10` by @stickz
+* Update to `rTorrent v0.15.5` by @stickz
+
+### Base Image
+* Update to `Alpine Linux 3.22` and `PHP v8.4` by @stickz in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/461 
+
 ## v5.2.9-a01
 ### Changes
 * Update to `ruTorrent v5.2.9` by @stickz
