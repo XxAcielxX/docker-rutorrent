@@ -2,6 +2,22 @@
 
 ## v5.2.10-a01
 ### Changes
+* Update to `rTorrent v0.16.4` by @stickz
+
+### Base Image
+* libTorrent to v0.16.4 by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/490
+* Align ruTorrent configuration with upstream by @crazy-max in #491
+  * `httpUserAgent` default value updated
+  * `pluginMinification` handling 
+  * `RU_PLUGIN_MINIFICATION` env var
+  * `throttleMaxSpeed` set to `327625*1024` due to limitation in libtorrent `ResourceManager::set_max_upload_unchoked`
+  * `::1` added to the list of local interfaces
+* Install libsigc++ from alpine repo and update to 3.6.0 by @crazy-max in #486
+* Update curl to 8.17.0 by @crazy-max in #487 
+* DumpTorrent v1.7.0 by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/475
+
+## v5.2.10-a01
+### Changes
 * Update to `ruTorrent v5.2.10` by @stickz
 * Update to `rTorrent v0.15.5` by @stickz
 
