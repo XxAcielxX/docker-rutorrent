@@ -1,6 +1,6 @@
 # Changelog
 
-## v5.2.10-a01
+## v5.2.10-a02
 ### Changes
 * Update to `rTorrent v0.16.4` by @stickz
 
