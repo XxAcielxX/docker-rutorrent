@@ -1,5 +1,12 @@
 # Changelog
 
+## v5.2.10-a03
+### Changes
+* Update to `rTorrent v0.16.5` by @djerfy
+
+### Base Image
+* libTorrent to v0.16.5 by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/494
+
 ## v5.2.10-a02
 ### Changes
 * Update to `rTorrent v0.16.4` by @stickz
