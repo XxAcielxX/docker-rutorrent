@@ -97,7 +97,7 @@ docker run -d \
 
 ## Ports
 
-* `6881` (or `RT_DHT_PORT`): DHT UDP port (`dht.port.set`)
+* `6881` (or `RT_DHT_PORT`): DHT UDP port (`dht.override_port.set`)
 * `8000` (or `XMLRPC_PORT`): XMLRPC port through nginx over SCGI socket
 * `8080` (or `RUTORRENT_PORT`): ruTorrent HTTP port
 * `9000` (or `WEBDAV_PORT`): WebDAV port on `/downloads`
