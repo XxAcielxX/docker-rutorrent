@@ -1,5 +1,21 @@
 # Changelog
 
+## v5.2.10-a05
+### Base Image
+* Use `dht.override_port.set` for `RT_DHT_PORT` by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/514
+* Remove explicit rTorrent bind address workaround by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/515
+
+## v5.2.10-a04
+### Changes
+* Update to `rTorrent v0.16.7` by @djerfy
+
+### Base Image
+* libTorrent v0.16.7 by @djerfy in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/500 https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/510
+* Make rTorrent session fdatasync configurable to reduce periodic stalls by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/511
+* Apply ruTorrent patches from https://github.com/Novik/ruTorrent/pull/2989 to fix deprecated rTorrent commands by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/498
+* Add a 10 seconds delay before initializing ruTorrent plugins by @Superpiffer in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/499
+* Release image is now built and signed using [Docker Github Builder](https://github.com/docker/github-builder-experimental) by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/501 https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/502 https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/504
+
 ## v5.2.10-a03
 ### Changes
 * Update to `rTorrent v0.16.5` by @djerfy
