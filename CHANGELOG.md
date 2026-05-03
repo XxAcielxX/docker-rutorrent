@@ -1,5 +1,14 @@
 # Changelog
 
+## v5.3.1-a01
+### Changes 
+* Update to `ruTorrent v5.3.1` by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/538
+* Update to `rTorrent and libTorrent v0.16.10` byby @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/538
+
+### Base Image
+* Vendor GeoIP2 ruTorrent plugin and drop legacy PHP GeoIP extension by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/529
+* update curl to v8.19.0 and c-ares to v1.34.6 by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/528
+
 ## v5.2.10-a05
 ### Base Image
 * Use `dht.override_port.set` for `RT_DHT_PORT` by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/514
