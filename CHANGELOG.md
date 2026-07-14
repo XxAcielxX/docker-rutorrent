@@ -1,5 +1,17 @@
 # Changelog
 
+## v5.3.7-a01
+> [!WARNING]
+> Existing users should check `/data/rtorrent/.rtorrent.rc` after upgrading. The container only creates this file on first startup, so older persisted configs will not automatically receive the [template](https://github.com/crazy-max/docker-rtorrent-rutorrent/blob/master/rootfs/tpls/.rtorrent.rc) changes that remove deprecated rTorrent commands such as `schedule2`, `execute2`, `encoding.add`, and `log.xmlrpc`. Update the existing config to match the new template, or remove it before startup if you want the default config regenerated. 
+
+### Changes
+* Update to `ruTorrent v5.3.7` by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/570
+* Update to `rTorrent and libTorrent v0.16.17` by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/570
+
+### Base Image
+* Add rutorrent-env-check helper script by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/570
+* Fixed ruTorrent plugin routes that use PHP PATH_INFO by @rodriciru in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/574
+
 ## v5.3.1-a01
 ### Changes 
 * Update to `ruTorrent v5.3.1` by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/538
