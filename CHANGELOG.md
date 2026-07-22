@@ -1,5 +1,9 @@
 # Changelog
 
+## v5.3.7-a02
+### Base Image
+* Fix rTorrent WAN IP startup option by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/573
+
 ## v5.3.7-a01
 > [!WARNING]
 > Existing users should check `/data/rtorrent/.rtorrent.rc` after upgrading. The container only creates this file on first startup, so older persisted configs will not automatically receive the [template](https://github.com/crazy-max/docker-rtorrent-rutorrent/blob/master/rootfs/tpls/.rtorrent.rc) changes that remove deprecated rTorrent commands such as `schedule2`, `execute2`, `encoding.add`, and `log.xmlrpc`. Update the existing config to match the new template, or remove it before startup if you want the default config regenerated. 
