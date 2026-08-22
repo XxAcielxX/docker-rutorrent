@@ -101,7 +101,7 @@ docker run -d \
 * `8000` (or `XMLRPC_PORT`): XMLRPC port through nginx over SCGI socket
 * `8080` (or `RUTORRENT_PORT`): ruTorrent HTTP port
 * `9000` (or `WEBDAV_PORT`): WebDAV port on `/downloads`
-* `50000` (or `RT_INC_PORT`): Incoming connections (`network.port_range.set`)
+* `50000` (or `RT_INC_PORT`): Incoming connections (`network.listen.port.range.set`)
 
 ## Updating
 
