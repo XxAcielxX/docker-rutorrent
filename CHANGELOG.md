@@ -1,5 +1,13 @@
 # Changelog
 
+## v5.3.12-a01
+### Changes
+* Update to `ruTorrent v5.3.12` by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/584
+* Update to `rTorrent and libTorrent v0.16.20` by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/584
+
+### Base Image
+* Update to `curl v8.21.0` and `c-ares v1.34.8` by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/585
+
 ## v5.3.7-a02
 ### Base Image
 * Fix rTorrent WAN IP startup option by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/573
