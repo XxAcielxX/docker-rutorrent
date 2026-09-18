@@ -1,5 +1,14 @@
 # Changelog
 
+## v5.3.14-a01
+### Changes
+* Update to `ruTorrent v5.3.14` by @ToshY in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/592
+* Update to `rTorrent and libTorrent v0.16.22` by @ToshY in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/592
+
+### Base Image
+* Force s6 to use SIGINT for rTorrent graceful shutdown by @mrkmrtns in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/589
+* Make Nginx worker processes configurable by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/594
+
 ## v5.3.12-a01
 ### Changes
 * Update to `ruTorrent v5.3.12` by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/584
