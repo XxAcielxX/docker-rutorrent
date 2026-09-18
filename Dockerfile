@@ -11,9 +11,9 @@ LABEL org.opencontainers.image.source="https://github.com/XxAcielxX/docker-rutor
 # modifications
 RUN \
   echo "**** apply image customisations ****" && \
-  sed -i -e '155s/themes [*\]/themes/; 261s_[*/]_/downloads_; 156,157d;415,416d' '/etc/cont-init.d/03-config.sh' && \
+  sed -i -e '0,/themes \\/s/themes \\/themes/; /\/downloads\/complete/d; /\/downloads\/temp/d; s|$topDirectory = '\''/'\''\x3b|$topDirectory = '\''/downloads'\''\x3b|g' '/etc/cont-init.d/03-config.sh' && \
   sed -i -e '4,22s/[*/]complete//' '/tpls/etc/nginx/conf.d/webdav.conf' && \
-  sed -i -e '/pex\.set/s/yes/no/; /umask\.set/s/^/#/; 56,60d' '/tpls/.rtorrent.rc' && \
+  sed -i -e '/pex\.set/s/yes/no/; /umask\.set/s/^/#/; /# Move finished/d; /d.get_finished_dir/d; /d.move_to_complete/d' '/tpls/.rtorrent.rc' && \
   sed -i -e '/complete\//d; /temp\//d; /directory\.default/s/download_temp/download/' '/tpls/etc/rtorrent/.rtlocal.rc'
 
 VOLUME [ "/data", "/downloads", "/passwd" ]
