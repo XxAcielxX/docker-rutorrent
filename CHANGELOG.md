@@ -1,5 +1,9 @@
 # Changelog
 
+## v5.3.14-a02
+### Fixed
+* #23  - sed replacement expression for `topDirectory` in `Dockerfile`
+
 ## v5.3.14-a01
 ### Changes
 * Update to `ruTorrent v5.3.14` by @ToshY in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/592
