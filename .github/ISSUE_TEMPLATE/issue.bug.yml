@@ -50,7 +50,7 @@ body:
           - **Browser**: Mozilla Firefox v108.0.2 (Desktop)
           - **Tried different browser?**: Yes, tested with Google Chrome v109.0.5414.74 (Desktop) and Microsoft Edge v108.0.1462.76 (Android).
       value: |
-        - Image:
+        - Release:
         - Browser:
         - Tried different browser?:
       render: markdown
