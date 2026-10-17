@@ -1,8 +1,18 @@
 # Changelog
 
+## v5.3.16-a01
+### Changes
+* Update to `ruTorrent v5.3.16` by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/601
+* Update to `rTorrent and libtorrent v0.16.25` by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/601 
+
+### Base Image
+* ruTorrent: option to configure HTTPS certificate verification by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/601
+* ruTorrent: prevent serving private directories and test files by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/601
+* Alpine Linux 3.24 and PHP 8.5 by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/602
+
 ## v5.3.14-a02
 ### Fixed
-* #23  - sed replacement expression for `topDirectory` in `Dockerfile`
+* [#23](https://github.com/XxAcielxX/docker-rutorrent/issues/23) - sed replacement expression for `topDirectory` in `Dockerfile`
 
 ## v5.3.14-a01
 ### Changes
