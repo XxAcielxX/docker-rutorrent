@@ -47,6 +47,11 @@ services:
   rutorrent:
     image: xxacielxx/rutorrent:latest
     container_name: rutorrent
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 32000
+        hard: 40000
     environment:
       - PUID=1000
       - PGID=1000
