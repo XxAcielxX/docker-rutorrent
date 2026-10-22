@@ -1,5 +1,28 @@
 # Changelog
 
+## v5.3.18-a01
+> [!IMPORTANT]
+> This release is built with the Alpine image with PHP 8.5.12.
+>
+> PHP 8.5.12 fixes CVE-2026-109618 and CVE-2026-109619, two critical vulnerabilities that can allow remote code execution without authentication. These affect PHP installations serving web requests, including PHP-FPM used by this image. See the [PHP security advisory](https://www.php.net/archive/2026.php#2026-10-21-5) for details.
+>
+> Pull the updated image and recreate your containers to apply the fixes.
+
+### Fixes
+* [#24](https://github.com/XxAcielxX/docker-rutorrent/pull/24) - Fix replacement expression for alpine linux busybox sed
+
+### Changes
+* Update to `ruTorrent v5.3.18` by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/608
+* Update to `rTorrent and libtorrent v0.16.25` by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/601
+
+### Base Image
+* Migrate to native s6-overlay v3 services by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/603
+* Remove the unused `dhclient` dependency by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/604
+* Update `curl to 8.23.0` and `c-ares to 1.34.9` by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/609
+* ruTorrent: option to configure HTTPS certificate verification by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/601
+ruTorrent: prevent serving private directories and test files by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/601
+Alpine Linux 3.24 and PHP 8.5 by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/602
+
 ## v5.3.16-a01
 ### Changes
 * Update to `ruTorrent v5.3.16` by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/601
