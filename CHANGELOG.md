@@ -1,5 +1,16 @@
 # Changelog
 
+## v5.3.18-a02
+> [!IMPORTANT]
+>This release disables PHP session upload progress tracking (`session.upload_progress.enabled=0`) as a precaution against CVE-2026-115560.
+>
+> This vulnerability can allow remote code execution under an unusual combination of PHP configuration and application behavior. Disabling this feature applies PHP's recommended mitigation until a fix is available. See the [PHP advisory](https://www.php.net/archive/2026.php#2026-10-23-1) for details.
+>
+> Pull the updated image and recreate your containers to apply the mitigation.
+
+### Base Image
+* Disable PHP session upload progress tracking by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/613
+
 ## v5.3.18-a01
 > [!IMPORTANT]
 > This release is built with the Alpine image with PHP 8.5.12.
