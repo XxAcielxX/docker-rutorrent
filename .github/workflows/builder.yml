@@ -16,11 +16,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
 
-      - name: Set up environments
+      - name: Extract Version & Metadata
+        id: prep
         run: |
-          echo "version=org.opencontainers.image.version=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
-          echo "revision=org.opencontainers.image.revision=${GITHUB_SHA}" >> $GITHUB_ENV
-          echo "created=org.opencontainers.image.created=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> $GITHUB_ENV
+          VERSION=${GITHUB_REF#refs/tags/}
+          VERSION_NO_V=${VERSION#v}
+          echo "version=${VERSION_NO_V}" >> $GITHUB_OUTPUT
+          echo "created=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> $GITHUB_OUTPUT
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v4
@@ -41,57 +43,20 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
 
-      - name: Build Image & Push amd64
-        run: |
-          docker buildx build \
-          --provenance=false \
-          --label ${{ env.version }} \
-          --label ${{ env.revision }} \
-          --label ${{ env.created }} \
-          -t "${{ env.DOCKERHUB_SLUG }}:amd64-latest" \
-          -t "${{ env.GHCR_SLUG }}:amd64-latest" \
-          --platform linux/amd64 -f ./Dockerfile --push .
-
-      - name: Build Image & Push arm32v7
-        run: |
-          docker buildx build \
-          --provenance=false \
-          --label ${{ env.version }} \
-          --label ${{ env.revision }} \
-          --label ${{ env.created }} \
-          -t "${{ env.DOCKERHUB_SLUG }}:arm32v7-latest" \
-          -t "${{ env.GHCR_SLUG }}:arm32v7-latest" \
-          --platform linux/arm/v7 -f ./Dockerfile --push .
-
-      - name: Build Image & Push arm64v8
-        run: |
-          docker buildx build \
-          --provenance=false \
-          --label ${{ env.version }} \
-          --label ${{ env.revision }} \
-          --label ${{ env.created }} \
-          -t "${{ env.DOCKERHUB_SLUG }}:arm64v8-latest" \
-          -t "${{ env.GHCR_SLUG }}:arm64v8-latest" \
-          --platform linux/arm64/v8 -f ./Dockerfile --push .
-
-      - name: Create manifest Docker Hub
-        env:
-          DOCKER_CLI_EXPERIMENTAL: enabled
-        run: |
-          [[ -f Dockerfile ]] && AMD64=${{ env.DOCKERHUB_SLUG }}:amd64-latest
-          [[ -f Dockerfile ]] && ARMV7=${{ env.DOCKERHUB_SLUG }}:arm32v7-latest
-          [[ -f Dockerfile ]] && ARM64=${{ env.DOCKERHUB_SLUG }}:arm64v8-latest
-          echo "*** Push Latest Tag Image ***"
-          docker manifest create ${{ env.DOCKERHUB_SLUG }}:latest ${AMD64} ${ARMV7} ${ARM64}
-          docker manifest push ${{ env.DOCKERHUB_SLUG }}:latest
-
-      - name: Create manifest GitHub
-        env:
-          DOCKER_CLI_EXPERIMENTAL: enabled
-        run: |
-          [[ -f Dockerfile ]] && GHCR_AMD64=${{ env.GHCR_SLUG }}:amd64-latest
-          [[ -f Dockerfile ]] && GHCR_ARMV7=${{ env.GHCR_SLUG }}:arm32v7-latest
-          [[ -f Dockerfile ]] && GHCR_ARM64=${{ env.GHCR_SLUG }}:arm64v8-latest
-          echo "*** Push GitHub Latest Tag Image ***"
-          docker manifest create ${{ env.GHCR_SLUG }}:latest ${GHCR_AMD64} ${GHCR_ARMV7} ${GHCR_ARM64}
-          docker manifest push ${{ env.GHCR_SLUG }}:latest
+      - name: Build and Push Multi-Arch Image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/arm/v7,linux/arm64/v8
+          push: true
+          provenance: false
+          tags: |
+            ${{ env.DOCKERHUB_SLUG }}:latest
+            ${{ env.DOCKERHUB_SLUG }}:${{ steps.prep.outputs.version }}
+            ${{ env.GHCR_SLUG }}:latest
+            ${{ env.GHCR_SLUG }}:${{ steps.prep.outputs.version }}
+          labels: |
+            org.opencontainers.image.version=${{ steps.prep.outputs.version }}
+            org.opencontainers.image.revision=${{ github.sha }}
+            org.opencontainers.image.created=${{ steps.prep.outputs.created }}
