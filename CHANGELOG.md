@@ -1,5 +1,27 @@
 # Changelog
 
+## v5.3.25-a01
+### Changes
+* Update to `ruTorrent v5.3.25` in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/625
+
+## Base Image
+* Update unrar to 7.3.2 in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/621
+* Update geoip2/geoip2 to 3.5.0 in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/620
+
+## v5.3.23-a01
+> [!WARNING]
+> `RT_LOG_LEVEL` is no longer supported. Replace it with `RT_LOG_GROUPS`, a comma-separated list of log groups (default: `errors,events`). The new groups are independent, so old log levels cannot be carried over directly.
+>
+> If `/data/rtorrent/.rtorrent.rc` contains logging directives using removed groups such as `info`, `warn`, or `storage`, update them before upgrading or rTorrent will fail to start. For example, replace `log.add_output = "info","log"` with separate entries for `"errors","log"` and `"events","log"`.
+
+### Changes
+* Updater to `ruTorrent v5.3.23` by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/618
+* Update to `rTorrent and libTorrent v0.16.28` by @crazy-max in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/618
+
+### Base Image
+* Show rTorrent log lines in docker logs at once by @noctuum in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/616
+* Build UnRAR from source and update to 7.2.7 by @noctuum in https://github.com/crazy-max/docker-rtorrent-rutorrent/pull/615
+
 ## v5.3.18-a02
 > [!IMPORTANT]
 >This release disables PHP session upload progress tracking (`session.upload_progress.enabled=0`) as a precaution against CVE-2026-115560.
