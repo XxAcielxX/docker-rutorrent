@@ -52,8 +52,8 @@ jobs:
           push: true
           provenance: false
           tags: |
-            ${{ env.DOCKERHUB_SLUG }}:latest
             ${{ env.DOCKERHUB_SLUG }}:${{ steps.prep.outputs.version }}
+            ${{ env.DOCKERHUB_SLUG }}:latest
             ${{ env.GHCR_SLUG }}:latest
             ${{ env.GHCR_SLUG }}:${{ steps.prep.outputs.version }}
           labels: |
